@@ -41,7 +41,7 @@ class storedMessage {
 
 
 class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate, MessagesDisplayDelegate {
-    
+    var counter = 0
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
     var databaseRef: DatabaseReference!
@@ -69,6 +69,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         let testSwiftUI = UIHostingController(rootView:
             ChatRoomBar()
         )
@@ -92,6 +93,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         //self.bring
 
         NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(willTerminate), name: UIApplication.willTerminateNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(pause), name: .notifyName, object: nil)
         
@@ -130,7 +132,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        return messages.count 
+        return messages.count + counter
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
@@ -229,7 +231,7 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
             print("メッセージ情報の保存に失敗しました。\(err)")
             return
         }
-            //self.messageArrayForDelete.append(messageId)
+            self.messageArrayForDelete.append(messageId)
             print("格納したメッセージIdは\(messageId)です")
             print("メッセージが保存されました")
             
@@ -254,6 +256,23 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
 
 //ホームボタン、スクリーンショットの検出
 extension ChatViewController {
+    
+    @objc func willTerminate() {
+        
+       // inputMessage(text: "ユーザがアプリを終了しました。")
+       // for documentId in messageArrayForDelete {
+       //     messageDocumentDelete(documentId)
+      //  }//メッセージドキュメントを削除
+       
+        //postRef.document(roomPassword).delete()//チャットルームドキュメントを削除
+        inputMessage(text: "テスト")
+       print("アプリが閉じられました。")
+         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func messageDocumentDelete (_ documentId: String) {
+        postRef.document(roomPassword).collection("messages").document(documentId).delete()
+    }
     
     
     @objc func didTakeScreenshot() {

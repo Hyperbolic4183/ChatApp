@@ -10,21 +10,30 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import SwiftUI
+import MessageKit
+import InputBarAccessoryView
+
+
+
 class RoomMakeViewController: UIViewController, UITextFieldDelegate {
 
     var postDic = [
     "password": String()
     
     ] as [String : Any]
-    
-    
+//
+//    let docData = [
+//    "message": String(),
+//    "sender": UIDevice.current.identifierForVendor!.uuidString,
+//    "time": Timestamp()
+//    ] as [String : Any]
     
     var databaseRef: DatabaseReference!
     var ref = Database.database().reference()
     let postRef = Firestore.firestore().collection("Rooms")
-    
+    var counter = 0
     var password: String = ""
-    var renketsuPassword = ""
+   
     @IBOutlet weak var makeRoomButton: UIButton!
     @IBOutlet weak var searchRoomButton: UIButton!
     @IBOutlet weak var roomNameTextField: UITextField!
@@ -127,7 +136,19 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
                         SVProgressHUD.dismiss()
                         //メッセージの数を取得し値を渡す
                         //一度退出し、退出後にメッセージが追加され、その後入室するとクラッシュする。　端末に状態を保存するか、入手時にドキュメントを取得する
-                        self.postRef.document(self.password).collection("Messages")
+                        
+                        self.postRef.document(self.password).collection("messages").getDocuments() { (querySnapshot, err) in
+                            if let err = err {
+                            print("Error getting documents: \(err)")
+                            } else {
+                                for document in querySnapshot!.documents {
+                                    self.counter += 1
+                                    print("ドキュメントデータは \(document.data())")
+                                    print("カウンターの数は\(self.counter)です")
+                                }
+                            }
+                        }
+                        
                         
                         self.performSegue(withIdentifier: "make", sender: nil)
 
@@ -147,6 +168,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         let nextVC = segue.destination as? ChatViewController
         nextVC?.roomPassword = self.password
         nextVC?.roomName = roomNameTextField.text!
+        nextVC?.counter = self.counter
 
         switch segue.identifier {
         case "search":
