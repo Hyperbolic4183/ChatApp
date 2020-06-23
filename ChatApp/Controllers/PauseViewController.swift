@@ -18,8 +18,31 @@ class PauseViewController: UIViewController {
     let postRef = Firestore.firestore().collection("Rooms")
     override func viewDidLoad() {
         super.viewDidLoad()
+        roomNameLabel.layer.cornerRadius = 25
+        roomNameLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        roomNameLabel.layer.shadowColor = UIColor.black.cgColor
+        roomNameLabel.layer.shadowOpacity = 0.6
+        roomNameLabel.layer.shadowRadius = 4
         
-NotificationCenter.default.addObserver(self, selector: #selector(willTerminate), name: UIApplication.willTerminateNotification, object: nil)
+        
+        roomPasswordLabel.layer.cornerRadius = 25
+        roomPasswordLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        roomPasswordLabel.layer.shadowColor = UIColor.black.cgColor
+        roomPasswordLabel.layer.shadowOpacity = 0.6
+        roomPasswordLabel.layer.shadowRadius = 4
+        
+        leaveRoomButton.layer.cornerRadius = 25
+        leaveRoomButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        leaveRoomButton.layer.shadowColor = UIColor.black.cgColor
+        leaveRoomButton.layer.shadowOpacity = 0.6
+        leaveRoomButton.layer.shadowRadius = 4
+        
+        dismissButton.layer.cornerRadius = 25
+        dismissButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        dismissButton.layer.shadowColor = UIColor.black.cgColor
+        dismissButton.layer.shadowOpacity = 0.6
+        dismissButton.layer.shadowRadius = 4
+        
         roomNameLabel.text = "ルーム名は\(roomName)"
         roomPasswordLabel.text = "パスワードは\(roomPassword)"
         
@@ -29,18 +52,22 @@ NotificationCenter.default.addObserver(self, selector: #selector(willTerminate),
     }
     
     
+    @IBOutlet weak var leaveRoomButton: UIButton!
     @IBOutlet weak var roomNameLabel: UILabel!
     @IBOutlet weak var roomPasswordLabel: UILabel!
-    @IBAction func roomDisbandButton(_ sender: Any) {
-        
-        
+    @IBOutlet weak var dismissButton: UIButton!
+    
+    
+    
+    
+    @IBAction func leaveRoomButton(_ sender: Any) {
         for documentId in messageArrayForDelete {
             messageDocumentDelete(documentId)
         }//メッセージドキュメントを削除
-        postRef.document(roomPassword).delete()//チャットルームドキュメントを削除
+        postRef.document(roomPassword).delete()//チャットルームドキュメントを削
+        
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    
     
     
     private func messageDocumentDelete (_ documentId: String) {
@@ -51,44 +78,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(willTerminate),
     @IBAction func dismissButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    @objc func willTerminate() {
-      //  inputMessage(text: "テスト")
-//        for documentId in messageArrayForDelete {
-//            messageDocumentDelete(documentId)
-//        }//メッセージドキュメントを削除
-      //  postRef.document(roomPassword).delete()//チャットルームドキュメントを削除
-       print("アプリが閉じられました。aa")
-    }
-    private func inputMessage(text: String) {
-        let messageId = randomString(length: 20)
-        let docData = [
-            "message": text,
-            "sender": UIDevice.current.identifierForVendor!.uuidString,
-            "time": Timestamp()
-            ] as [String : Any]
-        postRef.document(roomPassword).collection("messages").document(messageId).setData(docData) {(err) in
-        if let err = err {
-            print("メッセージ情報の保存に失敗しました。\(err)")
-            return
-        }
-            //self.messageArrayForDelete.append(messageId)
-            print("格納したメッセージIdは\(messageId)です")
-            print("メッセージが保存されました")
-            
-        }
-    }
-    func randomString(length: Int) -> String {
-            let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-            let len = UInt32(letters.length)
-
-            var randomString = ""
-        for _ in 0 ..< length {
-                let rand = arc4random_uniform(len)
-                var nextChar = letters.character(at: Int(rand))
-                randomString += NSString(characters: &nextChar, length: 1) as String
-            }
-            return randomString
-    }
     
+   
 
 }

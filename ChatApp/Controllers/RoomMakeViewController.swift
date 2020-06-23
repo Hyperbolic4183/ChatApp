@@ -14,71 +14,66 @@ import MessageKit
 import InputBarAccessoryView
 
 
-
 class RoomMakeViewController: UIViewController, UITextFieldDelegate {
 
     var postDic = [
     "password": String()
     
     ] as [String : Any]
-//
-//    let docData = [
-//    "message": String(),
-//    "sender": UIDevice.current.identifierForVendor!.uuidString,
-//    "time": Timestamp()
-//    ] as [String : Any]
+
     
     var databaseRef: DatabaseReference!
     var ref = Database.database().reference()
     let postRef = Firestore.firestore().collection("Rooms")
-    var counter = 0
+    var userDefaults = UserDefaults.standard
+
+    
     var password: String = ""
    
     @IBOutlet weak var makeRoomButton: UIButton!
     @IBOutlet weak var searchRoomButton: UIButton!
     @IBOutlet weak var roomNameTextField: UITextField!
     @IBOutlet weak var roomPasswordTextField: UITextField!
+    
+    
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        roomNameTextField.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        roomNameTextField.layer.shadowColor = UIColor.black.cgColor
+        roomNameTextField.layer.shadowOpacity = 0.6
+        roomNameTextField.layer.shadowRadius = 4
         roomNameTextField.delegate = self
+        
         roomPasswordTextField.delegate = self
+        roomPasswordTextField.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        roomPasswordTextField.layer.shadowColor = UIColor.black.cgColor
+        roomPasswordTextField.layer.shadowOpacity = 0.6
+        roomPasswordTextField.layer.shadowRadius = 4
         makeRoomButton.isEnabled = false
+        makeRoomButton.layer.cornerRadius = 25
+        makeRoomButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        makeRoomButton.layer.shadowColor = UIColor.black.cgColor
+        makeRoomButton.layer.shadowOpacity = 0.6
+        makeRoomButton.layer.shadowRadius = 4
+        makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
+        
         searchRoomButton.isEnabled = false
+        searchRoomButton.layer.cornerRadius = 25
+        searchRoomButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        searchRoomButton.layer.shadowColor = UIColor.black.cgColor
+        searchRoomButton.layer.shadowOpacity = 0.6
+        searchRoomButton.layer.shadowRadius = 4
+        
+        searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        self.password = roomNameTextField.text!+roomPasswordTextField.text!
-        return true
-    }
-    
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let textLength = (textField.text! as NSString).replacingCharacters(in: range, with: string).count
-        
-        switch textField.tag {
-        
-        case 1:
-            if (textLength >= 6 && textLength <= 15) {
-                makeRoomButton.isEnabled = true
-                searchRoomButton.isEnabled = true
-            } else {
-                makeRoomButton.isEnabled = false
-                searchRoomButton.isEnabled = false
-            }
-        default:
-            break
-        }
-
-
-
-        return true
-    }
     
     
     
@@ -92,6 +87,9 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         password = roomNameTextField.text!+roomPasswordTextField.text!
         
         SVProgressHUD.show()
+        
+        
+        
         postRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("エラーは\(err)")
@@ -121,8 +119,10 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func searchRoomButton(_ sender: Any) {
         
-        password = "\(roomNameTextField.text!)\(roomPasswordTextField.text!)"
+        password = roomNameTextField.text! + roomPasswordTextField.text!
         SVProgressHUD.show()
+        
+            
         postRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("パスワードが存在しない")
@@ -132,24 +132,25 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
                     
                     if self.password == document.documentID {
                         print("ルームを発見")
-                        
+                      
                         SVProgressHUD.dismiss()
-                        //メッセージの数を取得し値を渡す
-                        //一度退出し、退出後にメッセージが追加され、その後入室するとクラッシュする。　端末に状態を保存するか、入手時にドキュメントを取得する
-                        
-                        self.postRef.document(self.password).collection("messages").getDocuments() { (querySnapshot, err) in
-                            if let err = err {
-                            print("Error getting documents: \(err)")
-                            } else {
-                                for document in querySnapshot!.documents {
-                                    self.counter += 1
-                                    print("ドキュメントデータは \(document.data())")
-                                    print("カウンターの数は\(self.counter)です")
-                                }
-                            }
+                        guard let checkUserDefaultsArray: [String] = self.userDefaults.array(forKey: "userDefaultPasswordArray") as? [String] else {
+                            print("userDefault\(self.userDefaults.object(forKey: "userDefaultPasswordArray") as? [String])")
+                            print("見つかりません")
+                            self.performSegue(withIdentifier: "make", sender: nil)
+
+                            return
+                            
                         }
                         
-                        
+                        for checkPassword in checkUserDefaultsArray {
+                            if self.password == checkPassword {
+                                SVProgressHUD.showError(withStatus: "一度退出した部屋には再入室できません。")
+                                print("退出した部屋")
+                                return
+                            }
+                        }
+
                         self.performSegue(withIdentifier: "make", sender: nil)
 
                         return
@@ -162,13 +163,37 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         roomPasswordTextField.text = ""
     }
     
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let textLength = (textField.text! as NSString).replacingCharacters(in: range, with: string).count
+
+        switch textField.tag {
+
+        case 1:
+            if (textLength >= 6 && textLength <= 15) {
+                makeRoomButton.isEnabled = true
+                searchRoomButton.isEnabled = true
+                searchRoomButton.setTitleColor(UIColor.white, for: .normal)
+                makeRoomButton.setTitleColor(UIColor.white, for: .normal)
+            } else {
+                makeRoomButton.isEnabled = false
+                searchRoomButton.isEnabled = false
+                searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
+                makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
+            }
+        default:
+            break
+        }
+
+
+
+        return true
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextVC = segue.destination as? ChatViewController
-        nextVC?.roomPassword = self.password
+        nextVC?.password = self.password
         nextVC?.roomName = roomNameTextField.text!
-        nextVC?.counter = self.counter
+        
 
         switch segue.identifier {
         case "search":

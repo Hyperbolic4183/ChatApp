@@ -41,7 +41,9 @@ class storedMessage {
 
 
 class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate, MessagesDisplayDelegate {
-    var counter = 0
+    var userDefaults = UserDefaults.standard
+    var userDefaultPasswordArray = [String]()
+
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
     var databaseRef: DatabaseReference!
@@ -55,21 +57,25 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
          "message": String()
     ] as [String : Any]
     
-    var messageArrayForDelete = [String]()
+    var messageArrayForDelete: [String] = []
     var senderId = ""
     
     let currentUser = Sender(senderId: "self")
     
     let otherUser = Sender(senderId: "other")
     
-    var roomPassword = ""
+    var password = ""
     var roomName = ""
     var messages = [MessageType]()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        userDefaultPasswordArray.append(password)
+        userDefaults.set(userDefaultPasswordArray, forKey: "userDefaultPasswordArray")
         
+        print("格納された")
+        print("userdefault\(userDefaultPasswordArray)")
         let testSwiftUI = UIHostingController(rootView:
             ChatRoomBar()
         )
@@ -89,7 +95,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         //画面したからframeのY座標
         testSwiftUI.view.backgroundColor = .clear
         userId = UIDevice.current.identifierForVendor!.uuidString
-        print("パスワードは\(roomPassword)")
+        print("パスワードは\(password)")
         //self.bring
 
         NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
@@ -132,7 +138,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        return messages.count + counter
+        return messages.count
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
@@ -148,7 +154,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextVC = segue.destination as? PauseViewController
-        nextVC?.roomPassword = self.roomPassword
+        nextVC?.roomPassword = self.password
         nextVC?.roomName = self.roomName
         nextVC?.messageArrayForDelete = self.messageArrayForDelete
     }
@@ -177,7 +183,7 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
     }
     
     private func fetchMessage() {
-        postRef.document(roomPassword).collection("messages").addSnapshotListener{ (snapshots, err) in
+        postRef.document(password).collection("messages").addSnapshotListener{ (snapshots, err) in
             
             if let err = err {
                 print("メッセージ情報の取得に失敗しました。\(err)")
@@ -226,7 +232,7 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
             "sender": UIDevice.current.identifierForVendor!.uuidString,
             "time": Timestamp()
             ] as [String : Any]
-        postRef.document(roomPassword).collection("messages").document(messageId).setData(docData) {(err) in
+        postRef.document(password).collection("messages").document(messageId).setData(docData) {(err) in
         if let err = err {
             print("メッセージ情報の保存に失敗しました。\(err)")
             return
@@ -271,7 +277,7 @@ extension ChatViewController {
     }
     
     private func messageDocumentDelete (_ documentId: String) {
-        postRef.document(roomPassword).collection("messages").document(documentId).delete()
+        postRef.document(password).collection("messages").document(documentId).delete()
     }
     
     
