@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>503803188405-7vqjjblrub6i8n27qimr5iivhvgj37i5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.503803188405-7vqjjblrub6i8n27qimr5iivhvgj37i5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCoaNNDjdepVxpM0jarxn5dWfCPQ2nogbg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>503803188405</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>otsuka.amane.ChatApp</string>
+	<key>PROJECT_ID</key>
+	<string>easychatapp-1ef1c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>easychatapp-1ef1c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:503803188405:ios:7cb16c641b9d983df71afc</string>
+	<key>DATABASE_URL</key>
+	<string>https://easychatapp-1ef1c.firebaseio.com</string>
+</dict>
+</plist>

@@ -10,6 +10,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    
     var window: UIWindow?
 
 
@@ -18,6 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window = self.window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -35,11 +39,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
+        NotificationCenter.default.post(name: .notifyName, object: nil)
+        print("テスト sceneWillResignActive")
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        //ホームボタンが押された時
+        
+        
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -49,5 +58,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+}
+
+extension Notification.Name {
+    static let notifyName = Notification.Name("Pause")
 }
 

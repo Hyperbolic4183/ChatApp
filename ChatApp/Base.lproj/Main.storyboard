@@ -1,24 +1,218 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Wb-92-BFl">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Chat View Controller-->
+        <scene sceneID="M7y-jk-242">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController storyboardIdentifier="ChatViewController" modalPresentationStyle="fullScreen" id="Swv-TS-Nom" customClass="ChatViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DkC-tu-DGZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="swJ-AQ-Zav"/>
+                    </view>
+                    <connections>
+                        <segue destination="J6a-7q-rr2" kind="presentation" identifier="pause" id="56X-cY-D6E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qG2-GM-Ze7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2850.7246376811595" y="1895.7589285714284"/>
+        </scene>
+        <!--Room Make View Controller-->
+        <scene sceneID="4kR-br-uiC">
+            <objects>
+                <viewController storyboardIdentifier="RoomMakeViewController" modalPresentationStyle="fullScreen" id="8Wb-92-BFl" customClass="RoomMakeViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OLC-OB-0by">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZJl-7e-uLV">
+                                <rect key="frame" x="40" y="144" width="334" height="418"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eOb-Ws-oGl">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" verticalCompressionResistancePriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6ケタの数字を入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0J-6P-5e1">
+                                        <rect key="frame" x="0.0" y="130.5" width="334" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                <integer key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minLength">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfB-7n-WUy">
+                                        <rect key="frame" x="0.0" y="261.5" width="334" height="30"/>
+                                        <color key="backgroundColor" red="0.27285312669859152" green="0.79106341475352115" blue="0.57933581887183105" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="ルームを作成する">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="makeRoomButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="BKr-Kn-qFz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek4-bt-AWo">
+                                        <rect key="frame" x="0.0" y="388" width="334" height="30"/>
+                                        <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="ルームを検索する">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchRoomButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="jH4-hY-U7D"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eOb-Ws-oGl" secondAttribute="trailing" id="6js-g5-3LG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y0J-6P-5e1" secondAttribute="trailing" id="D1L-S6-N0a"/>
+                                    <constraint firstAttribute="trailing" secondItem="ek4-bt-AWo" secondAttribute="trailing" id="E30-NW-C4Q"/>
+                                    <constraint firstItem="Y0J-6P-5e1" firstAttribute="leading" secondItem="ZJl-7e-uLV" secondAttribute="leading" id="IJB-kL-xuq"/>
+                                    <constraint firstItem="vfB-7n-WUy" firstAttribute="leading" secondItem="ZJl-7e-uLV" secondAttribute="leading" id="WLN-N7-IcO"/>
+                                    <constraint firstItem="eOb-Ws-oGl" firstAttribute="leading" secondItem="ZJl-7e-uLV" secondAttribute="leading" id="gTQ-r2-4ti"/>
+                                    <constraint firstAttribute="trailing" secondItem="vfB-7n-WUy" secondAttribute="trailing" id="pJG-HP-ryn"/>
+                                    <constraint firstItem="ek4-bt-AWo" firstAttribute="leading" secondItem="ZJl-7e-uLV" secondAttribute="leading" id="qUc-7W-Bly"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ZJl-7e-uLV" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="AZO-1K-N8X" userLabel="Stack View.leading = Safe Area.leading + 140"/>
+                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="ZJl-7e-uLV" secondAttribute="trailing" constant="40" id="Fuh-9F-DKB"/>
+                            <constraint firstItem="hIv-yG-Xce" firstAttribute="bottom" secondItem="ZJl-7e-uLV" secondAttribute="bottom" constant="300" id="UB8-Tb-yYF"/>
+                            <constraint firstItem="ZJl-7e-uLV" firstAttribute="top" secondItem="hIv-yG-Xce" secondAttribute="top" constant="100" id="hQd-nw-3fG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hIv-yG-Xce"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mD3-xM-pfu"/>
+                    <connections>
+                        <outlet property="makeRoomButton" destination="vfB-7n-WUy" id="GkY-sX-i1u"/>
+                        <outlet property="roomNameTextField" destination="eOb-Ws-oGl" id="HRE-6f-qcI"/>
+                        <outlet property="roomPasswordTextField" destination="Y0J-6P-5e1" id="wdc-kN-fgR"/>
+                        <outlet property="searchRoomButton" destination="ek4-bt-AWo" id="jZo-Vz-Gva"/>
+                        <segue destination="Swv-TS-Nom" kind="presentation" identifier="make" id="Wqs-Hk-S6S"/>
+                        <segue destination="Swv-TS-Nom" kind="presentation" identifier="segue" id="9GL-Py-jLb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uy6-zM-Hp0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2037.68115942029" y="1895.7589285714284"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="Odn-1w-dEh">
+            <objects>
+                <viewController id="9vI-M1-Wyt" customClass="testViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E5f-vd-TFG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XGf-Nz-woi"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A90-c9-UNx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2094" y="2569"/>
+        </scene>
+        <!--Pause View Controller-->
+        <scene sceneID="wvB-Y4-Tl1">
+            <objects>
+                <viewController storyboardIdentifier="PauseViewController" modalPresentationStyle="fullScreen" id="J6a-7q-rr2" customClass="PauseViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="34W-xR-xyI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scA-wu-EYK">
+                                <rect key="frame" x="40" y="336" width="334" height="30"/>
+                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ルームを解散する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="roomDisbandButton:" destination="J6a-7q-rr2" eventType="touchUpInside" id="5jB-8O-EjG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvM-Ck-V8s">
+                                <rect key="frame" x="40" y="194" width="334" height="21"/>
+                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jaf-2M-bFb">
+                                <rect key="frame" x="40" y="265" width="334" height="21"/>
+                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lo-FD-ahO">
+                                <rect key="frame" x="40" y="416" width="334" height="30"/>
+                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ルームから退出する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="leaveRoomButton:" destination="J6a-7q-rr2" eventType="touchUpInside" id="ukN-wn-fN0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upb-aD-b9G">
+                                <rect key="frame" x="40" y="496" width="334" height="30"/>
+                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="閉じる">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButton:" destination="J6a-7q-rr2" eventType="touchUpInside" id="Nej-Uw-M1x"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jmf-lV-U7x" firstAttribute="trailing" secondItem="Upb-aD-b9G" secondAttribute="trailing" constant="40" id="0on-bG-Mn6"/>
+                            <constraint firstItem="Jaf-2M-bFb" firstAttribute="leading" secondItem="jmf-lV-U7x" secondAttribute="leading" constant="40" id="2KL-6m-w4D"/>
+                            <constraint firstItem="scA-wu-EYK" firstAttribute="top" secondItem="Jaf-2M-bFb" secondAttribute="bottom" constant="50" id="84N-73-Jgy"/>
+                            <constraint firstItem="Jaf-2M-bFb" firstAttribute="centerX" secondItem="34W-xR-xyI" secondAttribute="centerX" id="H9i-hc-41G"/>
+                            <constraint firstItem="jmf-lV-U7x" firstAttribute="trailing" secondItem="4lo-FD-ahO" secondAttribute="trailing" constant="40" id="L9v-sr-avv"/>
+                            <constraint firstItem="scA-wu-EYK" firstAttribute="leading" secondItem="jmf-lV-U7x" secondAttribute="leading" constant="40" id="Mya-f7-Bn6"/>
+                            <constraint firstItem="Upb-aD-b9G" firstAttribute="leading" secondItem="jmf-lV-U7x" secondAttribute="leading" constant="40" id="PwX-nD-EoX"/>
+                            <constraint firstItem="4lo-FD-ahO" firstAttribute="top" secondItem="scA-wu-EYK" secondAttribute="bottom" constant="50" id="Qd1-Pd-gub"/>
+                            <constraint firstItem="HvM-Ck-V8s" firstAttribute="centerX" secondItem="34W-xR-xyI" secondAttribute="centerX" id="TYb-YW-5CY"/>
+                            <constraint firstItem="jmf-lV-U7x" firstAttribute="trailing" secondItem="HvM-Ck-V8s" secondAttribute="trailing" constant="40" id="URd-RZ-6qA"/>
+                            <constraint firstItem="jmf-lV-U7x" firstAttribute="trailing" secondItem="scA-wu-EYK" secondAttribute="trailing" constant="40" id="ZBM-a6-B11"/>
+                            <constraint firstItem="jmf-lV-U7x" firstAttribute="trailing" secondItem="Jaf-2M-bFb" secondAttribute="trailing" constant="40" id="bZv-AF-6uj"/>
+                            <constraint firstItem="Jaf-2M-bFb" firstAttribute="top" secondItem="HvM-Ck-V8s" secondAttribute="bottom" constant="50" id="cEe-Wc-2Bq"/>
+                            <constraint firstItem="4lo-FD-ahO" firstAttribute="leading" secondItem="jmf-lV-U7x" secondAttribute="leading" constant="40" id="cwx-Nh-dU4"/>
+                            <constraint firstItem="Upb-aD-b9G" firstAttribute="top" secondItem="4lo-FD-ahO" secondAttribute="bottom" constant="50" id="iFX-kW-dhn"/>
+                            <constraint firstItem="scA-wu-EYK" firstAttribute="centerX" secondItem="34W-xR-xyI" secondAttribute="centerX" id="m2Q-A0-fVk"/>
+                            <constraint firstItem="HvM-Ck-V8s" firstAttribute="leading" secondItem="jmf-lV-U7x" secondAttribute="leading" constant="40" id="nZR-bw-ocz"/>
+                            <constraint firstItem="Upb-aD-b9G" firstAttribute="centerX" secondItem="34W-xR-xyI" secondAttribute="centerX" id="qZw-yU-RsZ"/>
+                            <constraint firstItem="HvM-Ck-V8s" firstAttribute="top" secondItem="jmf-lV-U7x" secondAttribute="top" constant="150" id="xpS-OG-lWt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jmf-lV-U7x"/>
+                    </view>
+                    <connections>
+                        <outlet property="roomNameLabel" destination="HvM-Ck-V8s" id="qEu-Cc-Wxa"/>
+                        <outlet property="roomPasswordLabel" destination="Jaf-2M-bFb" id="l40-KD-Y9N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kao-fN-w2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3584.057971014493" y="1895.7589285714284"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9GL-Py-jLb"/>
+    </inferredMetricsTieBreakers>
 </document>
