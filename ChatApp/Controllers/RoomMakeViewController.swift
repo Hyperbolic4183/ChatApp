@@ -29,7 +29,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
 
     
     var password: String = ""
-   
+    var counter = 0
     @IBOutlet weak var makeRoomButton: UIButton!
     @IBOutlet weak var searchRoomButton: UIButton!
     @IBOutlet weak var roomNameTextField: UITextField!
@@ -125,7 +125,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             
         postRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("パスワードが存在しない")
+                print("パスワードが存在しない\(err)")
                 return
             }
             for document in querySnapshot!.documents {
@@ -135,7 +135,6 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
                       
                         SVProgressHUD.dismiss()
                         guard let checkUserDefaultsArray: [String] = self.userDefaults.array(forKey: "userDefaultPasswordArray") as? [String] else {
-                            print("userDefault\(self.userDefaults.object(forKey: "userDefaultPasswordArray") as? [String])")
                             print("見つかりません")
                             self.performSegue(withIdentifier: "make", sender: nil)
 
@@ -193,7 +192,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         let nextVC = segue.destination as? ChatViewController
         nextVC?.password = self.password
         nextVC?.roomName = roomNameTextField.text!
-        
+        nextVC?.messages = []
 
         switch segue.identifier {
         case "search":

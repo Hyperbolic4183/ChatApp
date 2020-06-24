@@ -123,11 +123,13 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
             layout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
             layout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
         }
-        
-        
         fetchMessage()
+        
+        
         // Do any additional setup after loading the view.
     }
+    
+    
     
     func currentSender() -> SenderType {
         return currentUser//senderを決定する
@@ -159,9 +161,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         nextVC?.messageArrayForDelete = self.messageArrayForDelete
     }
     
-    override func viewDidLayoutSubviews() {
-        
-    }
+    
     
 
 
@@ -182,38 +182,45 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
       
     }
     
-    private func fetchMessage() {
+     func fetchMessage() {
         postRef.document(password).collection("messages").addSnapshotListener{ (snapshots, err) in
             
             if let err = err {
                 print("メッセージ情報の取得に失敗しました。\(err)")
                 return
             }
+            
+            
             snapshots?.documentChanges.forEach( { (DocumentChange) in
                 switch DocumentChange.type {
-                    
                 case .added:
-                    print("テスト .added")
                     let dic = DocumentChange.document.data()
                     let dicMessage = StoredMessage(dic: dic)
-                    print(dicMessage.message)
-                    print("メッセージのドキュメントデータは\(DocumentChange.document.documentID)です")
+                    
                     //メッセージのドキュメントを取得し、格納
                     //userIdが一致しない時senderをOtherUserにする
                     self.messageArrayForDelete.append(DocumentChange.document.documentID)
                     let sendertest = self.user(senderId: dicMessage.sender)
-                    print(sendertest)
-                    let message = Message(sender: sendertest, messageId: /*UUID().uuidString*/"1", sentDate: Date().addingTimeInterval(-16400), kind: .text(dicMessage.message))
-                    
+                    //Timestamp型をDate型に変換
+                    let dateValue = dicMessage.time.dateValue()
+                    let message = Message(sender: sendertest, messageId: self.randomString(length: 20), sentDate: dateValue, kind: .text(dicMessage.message))
+                    print("message.sentDate\(message.sentDate)")
                     self.messages.append(message)
-                    self.messagesCollectionView.insertSections([self.messages.count - 1])
+                    
+                    self.messages = self.messages.sorted(by: { (m1,m2) in
+                        return m1.sentDate < m2.sentDate
+                    })
+                    self.messagesCollectionView.reloadData()
+                    
                 case .modified, .removed:
                     print("nothing to do")
                 }
                 }
-            )
-        }
+            ) }
+       
     }
+    
+    
     
     func user(senderId: String) -> Sender {
         if senderId == self.userId {
@@ -238,8 +245,6 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
             return
         }
             self.messageArrayForDelete.append(messageId)
-            print("格納したメッセージIdは\(messageId)です")
-            print("メッセージが保存されました")
             
         }
     }
