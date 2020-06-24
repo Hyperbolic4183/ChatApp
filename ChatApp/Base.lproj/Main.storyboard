@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek4-bt-AWo">
-                                <rect key="frame" x="40" y="354" width="334" height="50"/>
+                                <rect key="frame" x="40" y="534" width="334" height="50"/>
                                 <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qob-fd-PiQ"/>
@@ -46,7 +46,7 @@
                                     <action selector="searchRoomButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="jH4-hY-U7D"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力して下さい" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HII-ae-mqS">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力して下さい(6文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HII-ae-mqS">
                                 <rect key="frame" x="40" y="84" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="So5-Kz-ziZ"/>
@@ -54,16 +54,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力してください(6文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSr-Zw-E7x">
-                                <rect key="frame" x="40" y="174" width="334" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="hOW-KX-gSX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfB-7n-WUy">
-                                <rect key="frame" x="40" y="264" width="334" height="50"/>
+                                <rect key="frame" x="40" y="444" width="334" height="50"/>
                                 <color key="backgroundColor" red="0.27285312669859152" green="0.79106341475352115" blue="0.57933581887183105" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ohd-2d-x1b"/>
@@ -75,28 +67,70 @@
                                     <action selector="makeRoomButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="BKr-Kn-qFz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiK-nc-ZG0">
+                                <rect key="frame" x="40" y="174" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rEN-p5-Ntp"/>
+                                </constraints>
+                                <state key="normal" title="ルーム名を自動生成する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="roomNameAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="kxy-Do-0fU"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力してください(6文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSr-Zw-E7x">
+                                <rect key="frame" x="40" y="264" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hOW-KX-gSX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-cu-9e0">
+                                <rect key="frame" x="40" y="354" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="b5d-CW-0de"/>
+                                </constraints>
+                                <state key="normal" title="パスワードを自動生成する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="roomPasswordAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="VBZ-Bc-1sJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="RSr-Zw-E7x" firstAttribute="top" secondItem="HII-ae-mqS" secondAttribute="bottom" constant="40" id="1fY-5I-zcB"/>
+                            <constraint firstItem="b9X-cu-9e0" firstAttribute="top" secondItem="RSr-Zw-E7x" secondAttribute="bottom" constant="40" id="3PN-3S-T3s"/>
                             <constraint firstItem="HII-ae-mqS" firstAttribute="top" secondItem="hIv-yG-Xce" secondAttribute="top" constant="40" id="3TH-pI-8A4"/>
                             <constraint firstItem="vfB-7n-WUy" firstAttribute="leading" secondItem="RSr-Zw-E7x" secondAttribute="leading" id="AUu-aG-uRj"/>
                             <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="RSr-Zw-E7x" secondAttribute="trailing" constant="40" id="Aoz-4Y-FJ6"/>
-                            <constraint firstItem="vfB-7n-WUy" firstAttribute="leading" secondItem="ek4-bt-AWo" secondAttribute="leading" id="IFs-rN-f0b"/>
+                            <constraint firstItem="qiK-nc-ZG0" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="BtP-oW-LEj"/>
+                            <constraint firstItem="b9X-cu-9e0" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="DaO-cd-KNl"/>
+                            <constraint firstItem="RSr-Zw-E7x" firstAttribute="top" secondItem="qiK-nc-ZG0" secondAttribute="bottom" constant="40" id="HXV-40-uWG"/>
+                            <constraint firstItem="ek4-bt-AWo" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="Mbk-Af-gNv"/>
                             <constraint firstItem="vfB-7n-WUy" firstAttribute="trailing" secondItem="RSr-Zw-E7x" secondAttribute="trailing" id="OVB-BS-xM9"/>
                             <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="HII-ae-mqS" secondAttribute="trailing" constant="40" id="TBi-vy-rtd"/>
                             <constraint firstItem="HII-ae-mqS" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="TUe-1t-I53"/>
-                            <constraint firstItem="vfB-7n-WUy" firstAttribute="top" secondItem="RSr-Zw-E7x" secondAttribute="bottom" constant="40" id="Wwb-r9-M7h"/>
+                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="qiK-nc-ZG0" secondAttribute="trailing" constant="40" id="cfn-Al-u9O"/>
+                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="ek4-bt-AWo" secondAttribute="trailing" constant="40" id="jZi-Pa-6no"/>
+                            <constraint firstItem="vfB-7n-WUy" firstAttribute="top" secondItem="b9X-cu-9e0" secondAttribute="bottom" constant="40" id="l3x-oj-vIU"/>
                             <constraint firstItem="ek4-bt-AWo" firstAttribute="top" secondItem="vfB-7n-WUy" secondAttribute="bottom" constant="40" id="lcs-Dj-5jV"/>
-                            <constraint firstItem="vfB-7n-WUy" firstAttribute="trailing" secondItem="ek4-bt-AWo" secondAttribute="trailing" id="wQQ-SR-QJP"/>
                             <constraint firstItem="RSr-Zw-E7x" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="y04-Gv-BNt"/>
+                            <constraint firstItem="qiK-nc-ZG0" firstAttribute="top" secondItem="HII-ae-mqS" secondAttribute="bottom" constant="40" id="zCy-YQ-1iw"/>
+                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="b9X-cu-9e0" secondAttribute="trailing" constant="40" id="zgB-FD-TdQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hIv-yG-Xce"/>
                     </view>
                     <navigationItem key="navigationItem" id="mD3-xM-pfu"/>
                     <connections>
                         <outlet property="makeRoomButton" destination="vfB-7n-WUy" id="GkY-sX-i1u"/>
+                        <outlet property="roomNameAutoButton" destination="qiK-nc-ZG0" id="KV6-R0-bh1"/>
                         <outlet property="roomNameTextField" destination="HII-ae-mqS" id="ZCE-CG-jd5"/>
+                        <outlet property="roomPasswordAutoButton" destination="b9X-cu-9e0" id="hl0-l2-SvL"/>
                         <outlet property="roomPasswordTextField" destination="RSr-Zw-E7x" id="c7g-Is-LTp"/>
                         <outlet property="searchRoomButton" destination="ek4-bt-AWo" id="jZo-Vz-Gva"/>
                         <segue destination="Swv-TS-Nom" kind="presentation" identifier="make" id="Wqs-Hk-S6S"/>
@@ -105,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uy6-zM-Hp0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2101" y="1896"/>
+            <point key="canvasLocation" x="2100" y="1895.7589285714284"/>
         </scene>
         <!--Pause View Controller-->
         <scene sceneID="wvB-Y4-Tl1">

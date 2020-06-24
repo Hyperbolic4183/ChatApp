@@ -61,10 +61,6 @@ class PauseViewController: UIViewController {
     
     
     @IBAction func leaveRoomButton(_ sender: Any) {
-        for documentId in messageArrayForDelete {
-            messageDocumentDelete(documentId)
-        }//メッセージドキュメントを削除
-        postRef.document(roomPassword).delete()//チャットルームドキュメントを削
         
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
