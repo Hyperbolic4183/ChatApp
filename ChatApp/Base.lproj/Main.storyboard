@@ -46,7 +46,7 @@
                                     <action selector="searchRoomButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="jH4-hY-U7D"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力して下さい(6文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HII-ae-mqS">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力して下さい(必須)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HII-ae-mqS">
                                 <rect key="frame" x="40" y="84" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="So5-Kz-ziZ"/>
@@ -80,7 +80,7 @@
                                     <action selector="roomNameAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="kxy-Do-0fU"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力してください(6文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSr-Zw-E7x">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力してください(10文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSr-Zw-E7x">
                                 <rect key="frame" x="40" y="264" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hOW-KX-gSX"/>

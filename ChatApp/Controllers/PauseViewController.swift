@@ -13,6 +13,7 @@ class PauseViewController: UIViewController {
 
     var roomPassword = ""
     var roomName = ""
+    var textFieldCount = Bool()
     var messageArrayForDelete = [String]()
     var databaseRef: DatabaseReference!
     let postRef = Firestore.firestore().collection("Rooms")

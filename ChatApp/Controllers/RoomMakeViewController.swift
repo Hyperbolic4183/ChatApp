@@ -29,7 +29,9 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
 
     
     var password: String = ""
-    var counter = 0
+    var roomNameTextFieldBool = Bool()
+    var roompasswordTextFieldBool = Bool()
+    
     @IBOutlet weak var makeRoomButton: UIButton!
     @IBOutlet weak var searchRoomButton: UIButton!
     @IBOutlet weak var roomNameTextField: UITextField!
@@ -42,6 +44,15 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     let height = UIScreen.main.bounds.size.height
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        checkButton()
+
+        
+    }
+    
+    func setupViews() {
+        roomNameTextFieldBool = false
+        roompasswordTextFieldBool = false
         roomNameTextField.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         roomNameTextField.layer.shadowColor = UIColor.black.cgColor
         roomNameTextField.layer.shadowOpacity = 0.6
@@ -60,7 +71,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         makeRoomButton.layer.shadowColor = UIColor.black.cgColor
         makeRoomButton.layer.shadowOpacity = 0.6
         makeRoomButton.layer.shadowRadius = 4
-        makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
+        //makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
         
         searchRoomButton.isEnabled = false
         searchRoomButton.layer.cornerRadius = 25
@@ -68,7 +79,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         searchRoomButton.layer.shadowColor = UIColor.black.cgColor
         searchRoomButton.layer.shadowOpacity = 0.6
         searchRoomButton.layer.shadowRadius = 4
-        searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
+        //searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
         
         roomNameAutoButton.layer.cornerRadius = 25
         roomNameAutoButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -85,8 +96,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         roomPasswordAutoButton.layer.shadowRadius = 4
         roomPasswordAutoButton.setTitleColor(UIColor.white, for: .normal)
         
-
-        // Do any additional setup after loading the view.
+        
     }
     
     
@@ -148,22 +158,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
                     if self.password == document.documentID {
                         print("ルームを発見")
                       
-//                        SVProgressHUD.dismiss()
-//                        guard let checkUserDefaultsArray: [String] = self.userDefaults.array(forKey: "userDefaultPasswordArray") as? [String] else {
-//                            print("見つかりません")
-//                            self.performSegue(withIdentifier: "make", sender: nil)
-//
-//                            return
-//
-//                        }
-                        
-//                        for checkPassword in checkUserDefaultsArray {
-//                            if self.password == checkPassword {
-//                                SVProgressHUD.showError(withStatus: "一度退出した部屋には再入室できません。")
-//                                print("退出した部屋")
-//                                return
-//                            }
-//                        }
+
 
                         self.performSegue(withIdentifier: "make", sender: nil)
 
@@ -179,45 +174,39 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textLength = (textField.text! as NSString).replacingCharacters(in: range, with: string).count
-
         
-            if textLength >= 6 {
-                makeRoomButton.isEnabled = true
-                searchRoomButton.isEnabled = true
-                searchRoomButton.setTitleColor(UIColor.white, for: .normal)
-                makeRoomButton.setTitleColor(UIColor.white, for: .normal)
+        switch textField.tag {
+        case 0:
+            if textLength < 1 {
+                roomNameTextFieldBool = false
             } else {
-                makeRoomButton.isEnabled = false
-                searchRoomButton.isEnabled = false
-                searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
-                makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
+                roomNameTextFieldBool = true
             }
-
-
+            checkButton()
+        case 1:
+            if textLength >= 10 {
+                roompasswordTextFieldBool = true
+            } else {
+                roompasswordTextFieldBool = false
+            }
+            checkButton()
+        default:
+            break
+        }
 
         return true
     }
     
     @IBAction func roomNameAutoButton(_ sender: Any) {
         roomNameTextField.text = randomString(length: 10)
-        if roomPasswordTextField.text?.isEmpty == false {
-            makeRoomButton.setTitleColor(UIColor.white, for: .normal)
-            makeRoomButton.isEnabled = true
-            searchRoomButton.setTitleColor(UIColor.white, for: .normal)
-            searchRoomButton.isEnabled = true
-        }
-            
+        roomNameTextFieldBool = true
+        checkButton()
     }
     
     @IBAction func roomPasswordAutoButton(_ sender: Any) {
-        roomPasswordTextField.text = randomNumber(length: 10)
-        if roomNameTextField.text?.isEmpty == false {
-            makeRoomButton.setTitleColor(UIColor.white, for: .normal)
-            makeRoomButton.isEnabled = true
-            searchRoomButton.setTitleColor(UIColor.white, for: .normal)
-            searchRoomButton.isEnabled = true
-        }
-        
+        roomPasswordTextField.text = randomString(length: 10)
+        roompasswordTextFieldBool = true
+        checkButton()
     }
     
     
@@ -253,19 +242,6 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             return randomString
     }
     
-    func randomNumber(length: Int) -> String {
-            let letters : NSString = "0123456789"
-            let len = UInt32(letters.length)
-
-            var randomNumber = ""
-        for _ in 0 ..< length {
-                let rand = arc4random_uniform(len)
-                var nextChar = letters.character(at: Int(rand))
-                randomNumber += NSString(characters: &nextChar, length: 1) as String
-            }
-            return randomNumber
-    }
-    
     
 }
 
@@ -275,5 +251,19 @@ extension RoomMakeViewController: UIApplicationDelegate {
     }
     func applicationDidEnterBackground(_ application: UIApplication) {
         print("applicationDidEnterBackground")
+    }
+    
+    private func checkButton() {
+        if roomNameTextFieldBool && roompasswordTextFieldBool {
+            makeRoomButton.isEnabled = true
+            makeRoomButton.setTitleColor(UIColor.white, for: .normal)
+            searchRoomButton.isEnabled = true
+            searchRoomButton.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            makeRoomButton.isEnabled = false
+            makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
+            searchRoomButton.isEnabled = false
+            searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
+        }
     }
 }
