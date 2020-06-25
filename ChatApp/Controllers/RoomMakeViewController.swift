@@ -47,8 +47,8 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupViews()
         checkButton()
-
-        
+        roomPasswordTextField.delegate = self
+        roomNameTextField.delegate = self
     }
     func setupViews() {
         roomNameTextFieldBool = false
@@ -57,9 +57,9 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         roomNameTextField.layer.shadowColor = UIColor.black.cgColor
         roomNameTextField.layer.shadowOpacity = 0.6
         roomNameTextField.layer.shadowRadius = 4
-        roomNameTextField.delegate = self
         
-        roomPasswordTextField.delegate = self
+        
+        
         roomPasswordTextField.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         roomPasswordTextField.layer.shadowColor = UIColor.black.cgColor
         roomPasswordTextField.layer.shadowOpacity = 0.6
@@ -108,12 +108,15 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func makeRoomButton(_ sender: Any) {
-        
+        print("新しいルーム名は\(self.roomNameTextField.text!)")
+        print("新しいパスワードは\(self.roomPasswordTextField.text!)")
+        makeRoomButton.isEnabled = false
+        makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
+        searchRoomButton.isEnabled = false
+        searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
         password = roomNameTextField.text!+roomPasswordTextField.text!
         
         SVProgressHUD.show()
-        
-        
         
         postRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -130,20 +133,39 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             }
             SVProgressHUD.dismiss()
             print("パスワードに被りはないです")
+            
+            
             self.postRef.document(self.password).setData(self.postDic)
-            self.performSegue(withIdentifier: "make", sender: nil)
+            //追加　ルーム名とパスワードをUserdefaultsに保存
+            print("新しいパスワードは\(self.roomPasswordTextField.text!)")
+            print("新しいルーム名は\(self.roomNameTextField.text!)")
+            
+            //UserDefaultに入ったことのある部屋の名前とパスワードを格納
+            var joinedRoomNameArray = self.userDefaults.array(forKey: "name") as? [String] ?? []
+            joinedRoomNameArray.append(self.roomNameTextField.text!)
+            self.userDefaults.set(joinedRoomNameArray, forKey: "name")
+            
+            //パスワードを格納
+            var joinedRoomPasswordArray = self.userDefaults.array(forKey: "password") as? [String] ?? []
+            joinedRoomPasswordArray.append(self.roomPasswordTextField.text!)
+            self.userDefaults.set(joinedRoomPasswordArray, forKey: "password")
+             //追加
+            //self.performSegue(withIdentifier: "make", sender: nil)
             return
             
         }
 
-        roomPasswordTextField.text = ""
+        
        
     }
     
     
     
     @IBAction func searchRoomButton(_ sender: Any) {
-        
+        makeRoomButton.isEnabled = false
+        makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
+        searchRoomButton.isEnabled = false
+        searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
         password = roomNameTextField.text! + roomPasswordTextField.text!
         SVProgressHUD.show()
         
@@ -157,10 +179,20 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
                     
                     if self.password == document.documentID {
                         print("ルームを発見")
-                      
+                      //追加 UseDefaultsに検索したルーム名とパスワードを格納
+                        var joinedRoomNameArray = self.userDefaults.array(forKey: "name") as? [String] ?? []
+                        joinedRoomNameArray.append(self.roomNameTextField.text!)
+                        self.userDefaults.set(joinedRoomNameArray, forKey: "name")
+                        
+                        
+                        //パスワードを格納
+                        var joinedRoomPasswordArray = self.userDefaults.array(forKey: "password") as? [String] ?? []
+                        joinedRoomPasswordArray.append(self.roomPasswordTextField.text!)
+                        self.userDefaults.set(joinedRoomPasswordArray, forKey: "password")
+                        
 
 
-                        self.performSegue(withIdentifier: "make", sender: nil)
+                        //self.performSegue(withIdentifier: "make", sender: nil)
 
                         return
                     }
@@ -226,9 +258,9 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             return
         }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        roomNameTextField.text = ""
-    }
+    //override func viewWillDisappear(_ animated: Bool) {
+     //   roomNameTextField.text = ""
+    //}
     
     func randomString(length: Int) -> String {
             let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

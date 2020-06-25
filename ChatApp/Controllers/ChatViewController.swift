@@ -73,38 +73,10 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        //UserDefaultに入ったことのある部屋の名前とパスワードを格納
-        var joinedRoomNameArray = userDefaults.array(forKey: "joinedRoomName") as? [String] ?? []
-        joinedRoomNameArray.append(roomName)
-        userDefaults.set(joinedRoomNameArray, forKey: "joinedRoomName")
         
-        
-        //パスワードを格納
-        var joinedRoomPasswordArray = userDefaults.array(forKey: "joinedRoomPassword") as? [String] ?? []
-        joinedRoomPasswordArray.append(roomPassword)
-        userDefaults.set(joinedRoomPasswordArray, forKey: "joinedRoomPassword")
-        print("ルームが格納された\(joinedRoomNameArray.count)")
-        print("パスワードが格納された\(joinedRoomPasswordArray.count)")
-        let testSwiftUI = UIHostingController(rootView:
-            ChatRoomBar()
-        )
-        self.addChild(testSwiftUI)
-        self.view.addSubview(testSwiftUI.view)
-        testSwiftUI.didMove(toParent: self)
-        
-        testSwiftUI.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        testSwiftUI.view.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        //frameの底からのY座標
-        testSwiftUI.view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 50).isActive = true
-        //右からのpaddingをどれだけ取るか
-        testSwiftUI.view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -50).isActive = true
-        //左からのpaddingをどれだけ取るか
-        //testSwiftUI.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        //画面したからframeのY座標
-        testSwiftUI.view.backgroundColor = .clear
         userId = UIDevice.current.identifierForVendor!.uuidString
         print("パスワードは\(password)")
+        
         //self.bring
 
         NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
@@ -132,12 +104,15 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
             layout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
             layout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
         }
+        
         fetchMessage()
         
         
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear\(password)")
+    }
     
     
     func currentSender() -> SenderType {
