@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="2850.7246376811595" y="1895.7589285714284"/>
         </scene>
-        <!--Room Make View Controller-->
+        <!--Item-->
         <scene sceneID="4kR-br-uiC">
             <objects>
                 <viewController storyboardIdentifier="RoomMakeViewController" modalPresentationStyle="fullScreen" id="8Wb-92-BFl" customClass="RoomMakeViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -125,6 +125,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hIv-yG-Xce"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="5D9-Gf-khE"/>
                     <navigationItem key="navigationItem" id="mD3-xM-pfu"/>
                     <connections>
                         <outlet property="makeRoomButton" destination="vfB-7n-WUy" id="GkY-sX-i1u"/>

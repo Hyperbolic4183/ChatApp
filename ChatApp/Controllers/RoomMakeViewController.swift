@@ -29,6 +29,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
 
     
     var password: String = ""
+    
     var roomNameTextFieldBool = Bool()
     var roompasswordTextFieldBool = Bool()
     
@@ -49,7 +50,6 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
 
         
     }
-    
     func setupViews() {
         roomNameTextFieldBool = false
         roompasswordTextFieldBool = false
@@ -214,6 +214,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         let nextVC = segue.destination as? ChatViewController
         nextVC?.password = self.password
         nextVC?.roomName = roomNameTextField.text!
+        nextVC?.roomPassword = roomNameTextField.text!
         nextVC?.messages = []
 
         switch segue.identifier {

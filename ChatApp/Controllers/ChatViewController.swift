@@ -42,7 +42,8 @@ class storedMessage {
 
 class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate, MessagesDisplayDelegate {
     var userDefaults = UserDefaults.standard
-    var userDefaultPasswordArray = [String]()
+    
+    var userDefaultsRoomNameArray = [String]()
 
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
@@ -66,16 +67,24 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     
     var password = ""
     var roomName = ""
+    var roomPassword = ""
     var messages = [MessageType]()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        userDefaultPasswordArray.append(password)
-        userDefaults.set(userDefaultPasswordArray, forKey: "userDefaultPasswordArray")
+        //UserDefaultに入ったことのある部屋の名前とパスワードを格納
+        var joinedRoomNameArray = userDefaults.array(forKey: "joinedRoomName") as? [String] ?? []
+        joinedRoomNameArray.append(roomName)
+        userDefaults.set(joinedRoomNameArray, forKey: "joinedRoomName")
         
-        print("格納された")
-        print("userdefault\(userDefaultPasswordArray)")
+        
+        //パスワードを格納
+        var joinedRoomPasswordArray = userDefaults.array(forKey: "joinedRoomPassword") as? [String] ?? []
+        joinedRoomPasswordArray.append(roomPassword)
+        userDefaults.set(joinedRoomPasswordArray, forKey: "joinedRoomPassword")
+        print("ルームが格納された\(joinedRoomNameArray.count)")
+        print("パスワードが格納された\(joinedRoomPasswordArray.count)")
         let testSwiftUI = UIHostingController(rootView:
             ChatRoomBar()
         )
@@ -156,7 +165,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextVC = segue.destination as? PauseViewController
-        nextVC?.roomPassword = self.password
+        nextVC?.roomPassword = self.roomPassword    
         nextVC?.roomName = self.roomName
         nextVC?.messageArrayForDelete = self.messageArrayForDelete
     }

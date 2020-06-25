@@ -19,18 +19,18 @@ class PauseViewController: UIViewController {
     let postRef = Firestore.firestore().collection("Rooms")
     override func viewDidLoad() {
         super.viewDidLoad()
-        roomNameLabel.layer.cornerRadius = 25
-        roomNameLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        roomNameLabel.layer.shadowColor = UIColor.black.cgColor
-        roomNameLabel.layer.shadowOpacity = 0.6
-        roomNameLabel.layer.shadowRadius = 4
+        roomNameLabel.layer.cornerRadius = 100
+        //roomNameLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        //roomNameLabel.layer.shadowColor = UIColor.black.cgColor
+        //roomNameLabel.layer.shadowOpacity = 0.6
+        //roomNameLabel.layer.shadowRadius = 4
         
         
-        roomPasswordLabel.layer.cornerRadius = 25
+        roomPasswordLabel.layer.cornerRadius = 100
         roomPasswordLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        roomPasswordLabel.layer.shadowColor = UIColor.black.cgColor
-        roomPasswordLabel.layer.shadowOpacity = 0.6
-        roomPasswordLabel.layer.shadowRadius = 4
+        //roomPasswordLabel.layer.shadowColor = UIColor.black.cgColor
+        //roomPasswordLabel.layer.shadowOpacity = 0.6
+        //roomPasswordLabel.layer.shadowRadius = 4
         
         leaveRoomButton.layer.cornerRadius = 25
         leaveRoomButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -64,11 +64,6 @@ class PauseViewController: UIViewController {
     @IBAction func leaveRoomButton(_ sender: Any) {
         
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    private func messageDocumentDelete (_ documentId: String) {
-        postRef.document(roomPassword).collection("messages").document(documentId).delete()
     }
     
     
