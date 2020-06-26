@@ -34,7 +34,6 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     var roompasswordTextFieldBool = Bool()
     
     @IBOutlet weak var makeRoomButton: UIButton!
-    @IBOutlet weak var searchRoomButton: UIButton!
     @IBOutlet weak var roomNameTextField: UITextField!
     @IBOutlet weak var roomPasswordTextField: UITextField!
     @IBOutlet weak var roomNameAutoButton: UIButton!
@@ -45,6 +44,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     let height = UIScreen.main.bounds.size.height
     override func viewDidLoad() {
         super.viewDidLoad()
+        UITabBar.appearance().tintColor = UIColor(red: 24/255, green: 149/255, blue: 124/255, alpha: 1)
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 149/255, blue: 124/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -78,13 +78,8 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         makeRoomButton.layer.shadowRadius = 4
         //makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
         
-        searchRoomButton.isEnabled = false
-        searchRoomButton.layer.cornerRadius = 5
-        searchRoomButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        searchRoomButton.layer.shadowColor = UIColor.black.cgColor
-        searchRoomButton.layer.shadowOpacity = 0.6
-        searchRoomButton.layer.shadowRadius = 4
-        //searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
+        
+       
         
         roomNameAutoButton.layer.cornerRadius = 5
         roomNameAutoButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -117,8 +112,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         print("新しいパスワードは\(self.roomPasswordTextField.text!)")
         makeRoomButton.isEnabled = false
         makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
-        searchRoomButton.isEnabled = false
-        searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
+       
         password = roomNameTextField.text!+roomPasswordTextField.text!
         
         SVProgressHUD.show()
@@ -166,48 +160,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    @IBAction func searchRoomButton(_ sender: Any) {
-        makeRoomButton.isEnabled = false
-        makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
-        searchRoomButton.isEnabled = false
-        searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
-        password = roomNameTextField.text! + roomPasswordTextField.text!
-        SVProgressHUD.show()
-        
-            
-        postRef.getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("パスワードが存在しない\(err)")
-                return
-            }
-            for document in querySnapshot!.documents {
-                    
-                    if self.password == document.documentID {
-                        print("ルームを発見")
-                      //追加 UseDefaultsに検索したルーム名とパスワードを格納
-                        var joinedRoomNameArray = self.userDefaults.array(forKey: "name") as? [String] ?? []
-                        joinedRoomNameArray.append(self.roomNameTextField.text!)
-                        self.userDefaults.set(joinedRoomNameArray, forKey: "name")
-                        
-                        
-                        //パスワードを格納
-                        var joinedRoomPasswordArray = self.userDefaults.array(forKey: "password") as? [String] ?? []
-                        joinedRoomPasswordArray.append(self.roomPasswordTextField.text!)
-                        self.userDefaults.set(joinedRoomPasswordArray, forKey: "password")
-                        
-
-
-                        //self.performSegue(withIdentifier: "make", sender: nil)
-
-                        return
-                    }
-            }
-            print("パスワードが存在しない")
-            SVProgressHUD.showError(withStatus: "ルームが存在しません。")
-            return
-        }
-        roomPasswordTextField.text = ""
-    }
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textLength = (textField.text! as NSString).replacingCharacters(in: range, with: string).count
@@ -295,13 +248,11 @@ extension RoomMakeViewController: UIApplicationDelegate {
         if roomNameTextFieldBool && roompasswordTextFieldBool {
             makeRoomButton.isEnabled = true
             makeRoomButton.setTitleColor(UIColor.black, for: .normal)
-            searchRoomButton.isEnabled = true
-            searchRoomButton.setTitleColor(UIColor.black, for: .normal)
+            
         } else {
             makeRoomButton.isEnabled = false
             makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
-            searchRoomButton.isEnabled = false
-            searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
+           
         }
     }
 }

@@ -20,6 +20,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     let cellSpacingHeight: CGFloat = 5
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 149/255, blue: 124/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -55,14 +56,6 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         return self.joinedRoomName.count
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = roomTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        cell.textLabel?.text = joinedRoomName[indexPath.row]
-//
-//        cell.layer.cornerRadius = 25
-//
-//        return cell
-//    }
     //追加
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -80,12 +73,6 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//
-//        let screenRect = UIScreen.main.bounds
-//        tableView.frame = CGRect(x: 0, y: 0, width: screenRect.width, height: screenRect.height)
-//    }
     
     //追加
     
@@ -113,9 +100,9 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let indexPath = self.roomTableView.indexPathForSelectedRow
         let NextVC = segue.destination as! ChatViewController
-        NextVC.roomName = self.joinedRoomName[indexPath!.row]!
-        NextVC.roomPassword = self.joinedRoomPassword[indexPath!.row]!
-        NextVC.password = "\(joinedRoomName[indexPath!.row]!)\(joinedRoomPassword[indexPath!.row]!)"
+        NextVC.roomName = self.joinedRoomName[indexPath!.section]!
+        NextVC.roomPassword = self.joinedRoomPassword[indexPath!.section]!
+        NextVC.password = "\(joinedRoomName[indexPath!.section]!)\(joinedRoomPassword[indexPath!.section]!)"
     }
 
 

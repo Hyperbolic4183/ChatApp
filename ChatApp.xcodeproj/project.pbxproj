@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471F089924A5EAB800987002 /* NavigationChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F089824A5EAB800987002 /* NavigationChatViewController.swift */; };
+		471F089B24A5F05C00987002 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F089A24A5F05C00987002 /* TabBarViewController.swift */; };
 		472427AF24A4AD3E00A57AD8 /* JoinedRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */; };
 		472AC5D224996B9600F6172D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC5D124996B9600F6172D /* AppDelegate.swift */; };
 		472AC5D424996B9600F6172D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC5D324996B9600F6172D /* SceneDelegate.swift */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		08858BDBB9F40DF2A3915B50 /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		286E6CF5ED94A55BE08AB6AB /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		471F089824A5EAB800987002 /* NavigationChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationChatViewController.swift; sourceTree = "<group>"; };
+		471F089A24A5F05C00987002 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedRoomViewController.swift; sourceTree = "<group>"; };
 		472AC5CE24996B9600F6172D /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		472AC5D124996B9600F6172D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				4764BB22249F1C6600FD96DC /* Message.swift */,
 				47698DAF24A025D800E16BB9 /* TextFieldExtension.swift */,
 				472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */,
+				471F089824A5EAB800987002 /* NavigationChatViewController.swift */,
+				471F089A24A5F05C00987002 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -250,7 +256,9 @@
 				4764BB23249F1C6600FD96DC /* Message.swift in Sources */,
 				472AC64A249B4BAC00F6172D /* ChatViewController.swift in Sources */,
 				472AC650249B77B900F6172D /* MockMessage.swift in Sources */,
+				471F089924A5EAB800987002 /* NavigationChatViewController.swift in Sources */,
 				472AC64E249B773600F6172D /* TestChatViewController.swift in Sources */,
+				471F089B24A5F05C00987002 /* TabBarViewController.swift in Sources */,
 				472AC5D424996B9600F6172D /* SceneDelegate.swift in Sources */,
 				472AC659249BB2D600F6172D /* PauseViewController.swift in Sources */,
 			);

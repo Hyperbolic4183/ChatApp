@@ -14,14 +14,7 @@
                     <view key="view" contentMode="scaleToFill" id="DkC-tu-DGZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfj-WE-kDV">
-                                <rect key="frame" x="0.0" y="163" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.31764705879999999" green="0.75686274509999996" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="swJ-AQ-Zav"/>
                     </view>
@@ -48,19 +41,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek4-bt-AWo">
-                                <rect key="frame" x="40" y="578" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="qob-fd-PiQ"/>
-                                </constraints>
-                                <state key="normal" title="ルームを検索する">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchRoomButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="jH4-hY-U7D"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力して下さい(必須)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HII-ae-mqS">
                                 <rect key="frame" x="40" y="128" width="334" height="50"/>
                                 <constraints>
@@ -75,7 +55,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ohd-2d-x1b"/>
                                 </constraints>
-                                <state key="normal" title="ルームを作成する">
+                                <state key="normal" title="ルームを作る・参加する">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -88,7 +68,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rEN-p5-Ntp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="ルーム名を自動生成する">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -110,6 +90,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="b5d-CW-0de"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="パスワードを自動生成する">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -128,14 +109,11 @@
                             <constraint firstItem="qiK-nc-ZG0" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="BtP-oW-LEj"/>
                             <constraint firstItem="b9X-cu-9e0" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="DaO-cd-KNl"/>
                             <constraint firstItem="RSr-Zw-E7x" firstAttribute="top" secondItem="qiK-nc-ZG0" secondAttribute="bottom" constant="40" id="HXV-40-uWG"/>
-                            <constraint firstItem="ek4-bt-AWo" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="Mbk-Af-gNv"/>
                             <constraint firstItem="vfB-7n-WUy" firstAttribute="trailing" secondItem="RSr-Zw-E7x" secondAttribute="trailing" id="OVB-BS-xM9"/>
                             <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="HII-ae-mqS" secondAttribute="trailing" constant="40" id="TBi-vy-rtd"/>
                             <constraint firstItem="HII-ae-mqS" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="TUe-1t-I53"/>
                             <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="qiK-nc-ZG0" secondAttribute="trailing" constant="40" id="cfn-Al-u9O"/>
-                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="ek4-bt-AWo" secondAttribute="trailing" constant="40" id="jZi-Pa-6no"/>
                             <constraint firstItem="vfB-7n-WUy" firstAttribute="top" secondItem="b9X-cu-9e0" secondAttribute="bottom" constant="40" id="l3x-oj-vIU"/>
-                            <constraint firstItem="ek4-bt-AWo" firstAttribute="top" secondItem="vfB-7n-WUy" secondAttribute="bottom" constant="40" id="lcs-Dj-5jV"/>
                             <constraint firstItem="RSr-Zw-E7x" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="y04-Gv-BNt"/>
                             <constraint firstItem="qiK-nc-ZG0" firstAttribute="top" secondItem="HII-ae-mqS" secondAttribute="bottom" constant="40" id="zCy-YQ-1iw"/>
                             <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="b9X-cu-9e0" secondAttribute="trailing" constant="40" id="zgB-FD-TdQ"/>
@@ -150,18 +128,19 @@
                         <outlet property="roomNameTextField" destination="HII-ae-mqS" id="ZCE-CG-jd5"/>
                         <outlet property="roomPasswordAutoButton" destination="b9X-cu-9e0" id="hl0-l2-SvL"/>
                         <outlet property="roomPasswordTextField" destination="RSr-Zw-E7x" id="Tjo-u8-JOx"/>
-                        <outlet property="searchRoomButton" destination="ek4-bt-AWo" id="jZo-Vz-Gva"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uy6-zM-Hp0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1119" y="2674"/>
         </scene>
-        <!--Item-->
+        <!--ルーム-->
         <scene sceneID="oBG-TW-mZK">
             <objects>
                 <navigationController id="DrF-Xi-F1C" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="NdB-um-Bw4"/>
+                    <tabBarItem key="tabBarItem" title="ルーム" image="plus.magnifyingglass" catalog="system" id="NdB-um-Bw4">
+                        <color key="badgeColor" red="0.31764705879999999" green="0.75686274509999996" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J60-5D-h0c">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -288,11 +267,13 @@
             </objects>
             <point key="canvasLocation" x="2730" y="1915"/>
         </scene>
-        <!--Item-->
+        <!--チャット-->
         <scene sceneID="Xtm-6A-M96">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ce2-Vv-Aen" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="VUa-Iv-GHI"/>
+                    <tabBarItem key="tabBarItem" title="チャット" image="bubble.right" catalog="system" id="VUa-Iv-GHI">
+                        <color key="badgeColor" red="0.31764705879999999" green="0.75686274509999996" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YeS-qW-hHr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -307,10 +288,10 @@
             </objects>
             <point key="canvasLocation" x="419" y="1915"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="AsW-Bw-aYj">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="n6p-Y9-R0E" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="n6p-Y9-R0E" customClass="TabBarViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mKZ-vr-IYm">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -330,4 +311,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="lxy-ZD-ffs"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="bubble.right" catalog="system" width="128" height="110"/>
+        <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
+    </resources>
 </document>

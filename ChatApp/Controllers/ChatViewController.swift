@@ -69,21 +69,13 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     var roomName = ""
     var roomPassword = ""
     var messages = [MessageType]()
-    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ?
-            UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1) :
-            UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
-    }
-    // メッセージの色を変更（デフォルトは自分：白、相手：黒）
-    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .white : .darkText
-    }
+   
     
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        print("ドキュメントパスワードは\(password)")
         navigationItem.title = roomName
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 0.5)
         self.navigationController?.navigationBar.tintColor = .white
@@ -98,7 +90,13 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         //self.bring
 
         NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(willTerminate), name: UIApplication.willTerminateNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didCapturedScreen),
+            name: UIScreen.capturedDidChangeNotification,
+            object: nil
+        )
+
         
         NotificationCenter.default.addObserver(self, selector: #selector(pause), name: .notifyName, object: nil)
         
@@ -123,11 +121,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
             layout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
         }
         
-        fetchMessage()
+        fetchMessage(text: password)
         
         
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear\(password)")
     }
@@ -185,8 +184,9 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
       
     }
     
-     func fetchMessage() {
-        postRef.document(password).collection("messages").addSnapshotListener{ (snapshots, err) in
+    func fetchMessage(text: String) {
+        print("テストドキュメント名は\(text)")
+        postRef.document(text).collection("messages").addSnapshotListener{ (snapshots, err) in
             
             if let err = err {
                 print("メッセージ情報の取得に失敗しました。\(err)")
@@ -236,6 +236,7 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
     }
     
     private func inputMessage(text: String) {
+        print("input:\(password)")
         let messageId = randomString(length: 20)
         let docData = [
             "message": text,
@@ -271,18 +272,6 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
 //ホームボタン、スクリーンショットの検出
 extension ChatViewController {
     
-    @objc func willTerminate() {
-        
-       // inputMessage(text: "ユーザがアプリを終了しました。")
-       // for documentId in messageArrayForDelete {
-       //     messageDocumentDelete(documentId)
-      //  }//メッセージドキュメントを削除
-       
-        //postRef.document(roomPassword).delete()//チャットルームドキュメントを削除
-        inputMessage(text: "テスト")
-       print("アプリが閉じられました。")
-         NotificationCenter.default.removeObserver(self)
-    }
     
     private func messageDocumentDelete (_ documentId: String) {
         postRef.document(password).collection("messages").document(documentId).delete()
@@ -290,9 +279,10 @@ extension ChatViewController {
     
     
     @objc func didTakeScreenshot() {
-        inputMessage(text: "スクリーンショットが保存されました")
+        inputMessage(text: "スクリーンショットを保存しました(自動送信)")
     }
-        
-    
+    @objc func didCapturedScreen() {
+        inputMessage(text: "画面を録画しました。(自動送信)")
+    }
 }
 
