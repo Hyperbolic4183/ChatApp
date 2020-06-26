@@ -42,8 +42,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         
         roomTableView.reloadData()
         
-        //relayJoinedRoomName = joinedRoomName
-        //relayRoinedRoomPassword = joinedRoomPassword
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,7 +64,8 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let indexPath = self.roomTableView.indexPathForSelectedRow
         let NextVC = segue.destination as! ChatViewController
-        
+        NextVC.roomName = self.joinedRoomName[indexPath!.row]!
+        NextVC.roomPassword = self.joinedRoomPassword[indexPath!.row]!
         NextVC.password = "\(joinedRoomName[indexPath!.row]!)\(joinedRoomPassword[indexPath!.row]!)"
     }
 

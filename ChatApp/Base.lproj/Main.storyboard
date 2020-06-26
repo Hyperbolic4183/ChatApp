@@ -40,9 +40,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="J6a-7q-rr2" kind="presentation" identifier="pause" id="56X-cY-D6E"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qG2-GM-Ze7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -239,7 +236,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zHx-We-ife"/>
                                 </constraints>
-                                <state key="normal" title="ルームから退出する">
+                                <state key="normal" title="ルームを削除する">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -311,7 +308,4 @@
             <point key="canvasLocation" x="-245" y="2298"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="lxy-ZD-ffs"/>
-    </inferredMetricsTieBreakers>
 </document>

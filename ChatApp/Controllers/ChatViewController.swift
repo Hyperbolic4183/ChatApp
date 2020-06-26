@@ -76,7 +76,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         
         userId = UIDevice.current.identifierForVendor!.uuidString
         print("パスワードは\(password)")
-        
+        print("ルーム名は\(roomName)")
+        print("ルームのパスワードは\(roomPassword)")
         //self.bring
 
         NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
@@ -142,7 +143,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         let nextVC = segue.destination as? PauseViewController
         nextVC?.roomPassword = self.roomPassword    
         nextVC?.roomName = self.roomName
-        nextVC?.messageArrayForDelete = self.messageArrayForDelete
+        nextVC?.password = self.password
+       // nextVC?.messageArrayForDelete = self.messageArrayForDelete
     }
     
     
