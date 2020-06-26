@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         myTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         myTable.delegate = self
         myTable.dataSource = self
+        view.backgroundColor = .red
         // Do any additional setup after loading the view.
     }
 

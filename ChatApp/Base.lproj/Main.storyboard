@@ -7,45 +7,40 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="OUF-3Q-axG">
-            <objects>
-                <viewController id="9gw-BV-lhI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iHA-3J-oVR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="dz9-Jd-hks"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="4EL-8P-oDN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mHk-Kn-Vhr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2196" y="1227"/>
-        </scene>
         <!--Chat View Controller-->
         <scene sceneID="M7y-jk-242">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" modalPresentationStyle="fullScreen" id="Swv-TS-Nom" customClass="ChatViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="Swv-TS-Nom" customClass="ChatViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DkC-tu-DGZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfj-WE-kDV">
+                                <rect key="frame" x="0.0" y="163" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="swJ-AQ-Zav"/>
                     </view>
                     <navigationItem key="navigationItem" id="qUJ-fd-Znf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wR0-vU-GUV">
                             <connections>
-                                <segue destination="J6a-7q-rr2" kind="show" id="lxy-ZD-ffs"/>
+                                <segue destination="J6a-7q-rr2" kind="show" identifier="" id="lxy-ZD-ffs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="J6a-7q-rr2" kind="show" identifier="home" id="ewM-Mm-Spl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qG2-GM-Ze7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2197" y="1915"/>
+            <point key="canvasLocation" x="1845" y="1915"/>
         </scene>
-        <!--Item-->
+        <!--ルームを作成する-->
         <scene sceneID="4kR-br-uiC">
             <objects>
                 <viewController storyboardIdentifier="RoomMakeViewController" modalPresentationStyle="fullScreen" id="8Wb-92-BFl" customClass="RoomMakeViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -54,8 +49,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek4-bt-AWo">
-                                <rect key="frame" x="40" y="534" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="40" y="578" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qob-fd-PiQ"/>
                                 </constraints>
@@ -67,7 +62,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力して下さい(必須)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HII-ae-mqS">
-                                <rect key="frame" x="40" y="84" width="334" height="50"/>
+                                <rect key="frame" x="40" y="128" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="So5-Kz-ziZ"/>
                                 </constraints>
@@ -75,8 +70,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfB-7n-WUy">
-                                <rect key="frame" x="40" y="444" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.27285312669859152" green="0.79106341475352115" blue="0.57933581887183105" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="40" y="488" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ohd-2d-x1b"/>
                                 </constraints>
@@ -88,20 +83,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiK-nc-ZG0">
-                                <rect key="frame" x="40" y="174" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="40" y="218" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.68235294117647061" green="0.93333333333333335" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rEN-p5-Ntp"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="ルーム名を自動生成する">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="roomNameAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="kxy-Do-0fU"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力してください(10文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSr-Zw-E7x">
-                                <rect key="frame" x="40" y="264" width="334" height="50"/>
+                                <rect key="frame" x="40" y="308" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hOW-KX-gSX"/>
                                 </constraints>
@@ -109,20 +105,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-cu-9e0">
-                                <rect key="frame" x="40" y="354" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="40" y="398" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="b5d-CW-0de"/>
                                 </constraints>
                                 <state key="normal" title="パスワードを自動生成する">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="roomPasswordAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="VBZ-Bc-1sJ"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.31764705882352939" green="0.75686274509803919" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="b9X-cu-9e0" firstAttribute="top" secondItem="RSr-Zw-E7x" secondAttribute="bottom" constant="40" id="3PN-3S-T3s"/>
                             <constraint firstItem="HII-ae-mqS" firstAttribute="top" secondItem="hIv-yG-Xce" secondAttribute="top" constant="40" id="3TH-pI-8A4"/>
@@ -146,7 +143,7 @@
                         <viewLayoutGuide key="safeArea" id="hIv-yG-Xce"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="5D9-Gf-khE"/>
-                    <navigationItem key="navigationItem" id="mD3-xM-pfu"/>
+                    <navigationItem key="navigationItem" title="ルームを作成する" id="mD3-xM-pfu"/>
                     <connections>
                         <outlet property="makeRoomButton" destination="vfB-7n-WUy" id="GkY-sX-i1u"/>
                         <outlet property="roomNameAutoButton" destination="qiK-nc-ZG0" id="KV6-R0-bh1"/>
@@ -158,9 +155,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uy6-zM-Hp0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1190" y="2602"/>
+            <point key="canvasLocation" x="1119" y="2674"/>
         </scene>
-        <!--Joined Room View Controller-->
+        <!--Item-->
+        <scene sceneID="oBG-TW-mZK">
+            <objects>
+                <navigationController id="DrF-Xi-F1C" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="NdB-um-Bw4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J60-5D-h0c">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8Wb-92-BFl" kind="relationship" relationship="rootViewController" id="jwV-IN-K8A"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t1N-gI-4hj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="2674"/>
+        </scene>
+        <!--チャットルーム-->
         <scene sceneID="rQp-kQ-qAj">
             <objects>
                 <viewController storyboardIdentifier="JoinedRoomViewController" id="HIL-NC-iXx" customClass="JoinedRoomViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -168,17 +182,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ddm-jJ-XL1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ddm-jJ-XL1">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.75686274509999996" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.31764705882352939" green="0.75686274509803919" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ZUE-fV-PFO">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZUE-fV-PFO" id="sul-kX-qzr">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -192,7 +211,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eD6-LW-8SM"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cVs-3q-psm"/>
+                    <navigationItem key="navigationItem" title="チャットルーム" id="cVs-3q-psm"/>
                     <connections>
                         <outlet property="roomTableView" destination="Ddm-jJ-XL1" id="B18-J1-nU0"/>
                         <segue destination="Swv-TS-Nom" kind="show" identifier="cellSegue" id="G0R-iI-T4g"/>
@@ -200,9 +219,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cA-fp-2ft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1190" y="1915"/>
+            <point key="canvasLocation" x="1119" y="1915"/>
         </scene>
-        <!--Pause View Controller-->
+        <!--ルーム情報-->
         <scene sceneID="wvB-Y4-Tl1">
             <objects>
                 <viewController storyboardIdentifier="PauseViewController" modalPresentationStyle="fullScreen" id="J6a-7q-rr2" customClass="PauseViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,39 +231,39 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvM-Ck-V8s">
                                 <rect key="frame" x="40" y="188" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="WB4-8l-CgY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jaf-2M-bFb">
                                 <rect key="frame" x="40" y="278" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uFN-EX-lH4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqI-yN-zyT">
                                 <rect key="frame" x="40" y="368" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.2728531267" green="0.79106341479999998" blue="0.57933581889999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zHx-We-ife"/>
                                 </constraints>
-                                <state key="normal" title="ルームを削除する">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="ルームから退会する">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="leaveRoomButton:" destination="J6a-7q-rr2" eventType="touchUpInside" id="OLE-K5-p1j"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.31764705879999999" green="0.75686274509999996" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jaf-2M-bFb" firstAttribute="top" secondItem="HvM-Ck-V8s" secondAttribute="bottom" constant="40" id="Bk9-dk-gkJ"/>
                             <constraint firstItem="HvM-Ck-V8s" firstAttribute="top" secondItem="jmf-lV-U7x" secondAttribute="top" constant="100" id="Ci1-Lk-9gQ"/>
@@ -258,7 +277,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jmf-lV-U7x"/>
                     </view>
-                    <navigationItem key="navigationItem" id="NAx-Y0-k5X"/>
+                    <navigationItem key="navigationItem" title="ルーム情報" id="NAx-Y0-k5X"/>
                     <connections>
                         <outlet property="leaveRoomButton" destination="cqI-yN-zyT" id="7dz-SS-9YC"/>
                         <outlet property="roomNameLabel" destination="HvM-Ck-V8s" id="qEu-Cc-Wxa"/>
@@ -267,7 +286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kao-fN-w2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3042" y="1915"/>
+            <point key="canvasLocation" x="2730" y="1915"/>
         </scene>
         <!--Item-->
         <scene sceneID="Xtm-6A-M96">
@@ -300,12 +319,15 @@
                     </tabBar>
                     <connections>
                         <segue destination="Ce2-Vv-Aen" kind="relationship" relationship="viewControllers" id="DH1-JU-dLS"/>
-                        <segue destination="8Wb-92-BFl" kind="relationship" relationship="viewControllers" id="joG-sf-Zla"/>
+                        <segue destination="DrF-Xi-F1C" kind="relationship" relationship="viewControllers" id="b9e-PF-nEf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLO-7G-WO9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-245" y="2298"/>
+            <point key="canvasLocation" x="-454" y="2281"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lxy-ZD-ffs"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -69,12 +69,29 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     var roomName = ""
     var roomPassword = ""
     var messages = [MessageType]()
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ?
+            UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1) :
+            UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+    }
+    // メッセージの色を変更（デフォルトは自分：白、相手：黒）
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? .white : .darkText
+    }
+    
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        navigationItem.title = roomName
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 0.5)
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
         userId = UIDevice.current.identifierForVendor!.uuidString
+        
         print("パスワードは\(password)")
         print("ルーム名は\(roomName)")
         print("ルームのパスワードは\(roomPassword)")
@@ -135,16 +152,16 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     }
     
     //ホームボタンが押された時に遷移する
-    @objc func pause() {
-        performSegue(withIdentifier: "pause", sender: nil)
+    @objc private func pause() {
+       performSegue(withIdentifier: "home", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextVC = segue.destination as? PauseViewController
-        nextVC?.roomPassword = self.roomPassword    
+        nextVC?.roomPassword = self.roomPassword
         nextVC?.roomName = self.roomName
         nextVC?.password = self.password
-       // nextVC?.messageArrayForDelete = self.messageArrayForDelete
+        
     }
     
     
@@ -274,9 +291,6 @@ extension ChatViewController {
     
     @objc func didTakeScreenshot() {
         inputMessage(text: "スクリーンショットが保存されました")
-    }
-    @objc func didHomebuttonTapped() {
-        print("ホームボタン")
     }
         
     

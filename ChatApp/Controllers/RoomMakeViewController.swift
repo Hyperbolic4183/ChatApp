@@ -45,6 +45,11 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     let height = UIScreen.main.bounds.size.height
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 149/255, blue: 124/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
         setupViews()
         checkButton()
         roomPasswordTextField.delegate = self
@@ -66,7 +71,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         roomPasswordTextField.layer.shadowRadius = 4
         
         makeRoomButton.isEnabled = false
-        makeRoomButton.layer.cornerRadius = 25
+        makeRoomButton.layer.cornerRadius = 5
         makeRoomButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         makeRoomButton.layer.shadowColor = UIColor.black.cgColor
         makeRoomButton.layer.shadowOpacity = 0.6
@@ -74,27 +79,27 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         //makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
         
         searchRoomButton.isEnabled = false
-        searchRoomButton.layer.cornerRadius = 25
+        searchRoomButton.layer.cornerRadius = 5
         searchRoomButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         searchRoomButton.layer.shadowColor = UIColor.black.cgColor
         searchRoomButton.layer.shadowOpacity = 0.6
         searchRoomButton.layer.shadowRadius = 4
         //searchRoomButton.setTitleColor(UIColor.gray, for: .normal)
         
-        roomNameAutoButton.layer.cornerRadius = 25
+        roomNameAutoButton.layer.cornerRadius = 5
         roomNameAutoButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         
         roomNameAutoButton.layer.shadowColor = UIColor.black.cgColor
         roomNameAutoButton.layer.shadowOpacity = 0.6
         roomNameAutoButton.layer.shadowRadius = 4
-        roomNameAutoButton.setTitleColor(UIColor.white, for: .normal)
+        roomNameAutoButton.setTitleColor(UIColor.black, for: .normal)
         
-        roomPasswordAutoButton.layer.cornerRadius = 25
+        roomPasswordAutoButton.layer.cornerRadius = 5
         roomPasswordAutoButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         roomPasswordAutoButton.layer.shadowColor = UIColor.black.cgColor
         roomPasswordAutoButton.layer.shadowOpacity = 0.6
         roomPasswordAutoButton.layer.shadowRadius = 4
-        roomPasswordAutoButton.setTitleColor(UIColor.white, for: .normal)
+        roomPasswordAutoButton.setTitleColor(UIColor.black, for: .normal)
         
         
     }
@@ -289,9 +294,9 @@ extension RoomMakeViewController: UIApplicationDelegate {
     private func checkButton() {
         if roomNameTextFieldBool && roompasswordTextFieldBool {
             makeRoomButton.isEnabled = true
-            makeRoomButton.setTitleColor(UIColor.white, for: .normal)
+            makeRoomButton.setTitleColor(UIColor.black, for: .normal)
             searchRoomButton.isEnabled = true
-            searchRoomButton.setTitleColor(UIColor.white, for: .normal)
+            searchRoomButton.setTitleColor(UIColor.black, for: .normal)
         } else {
             makeRoomButton.isEnabled = false
             makeRoomButton.setTitleColor(UIColor.gray, for: .normal)

@@ -45,15 +45,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
-        NotificationCenter.default.post(name: .notifyName, object: nil)
-        print("テスト sceneWillResignActive")
+       NotificationCenter.default.post(name: .notifyName, object: nil)
+        
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         //ホームボタンが押された時
-        
+         
         
     }
 
@@ -61,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-         print("sceneDidDisconnect")
+        
     }
     
     

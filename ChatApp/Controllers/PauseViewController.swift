@@ -22,20 +22,25 @@ class PauseViewController: UIViewController {
     let postRef = Firestore.firestore().collection("Rooms")
     override func viewDidLoad() {
         super.viewDidLoad()
-        roomNameLabel.layer.cornerRadius = 100
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 1.0)
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+        roomNameLabel.layer.cornerRadius = 5
         roomNameLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         roomNameLabel.layer.shadowColor = UIColor.black.cgColor
         roomNameLabel.layer.shadowOpacity = 0.6
         roomNameLabel.layer.shadowRadius = 4
         
         
-        roomPasswordLabel.layer.cornerRadius = 100
+        roomPasswordLabel.layer.cornerRadius = 5
         roomPasswordLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         roomPasswordLabel.layer.shadowColor = UIColor.black.cgColor
         roomPasswordLabel.layer.shadowOpacity = 0.6
         roomPasswordLabel.layer.shadowRadius = 4
         
-        leaveRoomButton.layer.cornerRadius = 25
+        leaveRoomButton.layer.cornerRadius = 5
         leaveRoomButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         leaveRoomButton.layer.shadowColor = UIColor.black.cgColor
         leaveRoomButton.layer.shadowOpacity = 0.6
