@@ -90,13 +90,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         print("ルームのパスワードは\(roomPassword)")
         //self.bring
 
-        NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didCapturedScreen),
-            name: UIScreen.capturedDidChangeNotification,
-            object: nil
-        )
+        
 
         
         NotificationCenter.default.addObserver(self, selector: #selector(pause), name: .notifyName, object: nil)
@@ -127,9 +121,23 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         
         // Do any additional setup after loading the view.
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.removeObserver(self,name: UIApplication.userDidTakeScreenshotNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIScreen.capturedDidChangeNotification, object: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear\(password)")
+        NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didCapturedScreen),
+            name: UIScreen.capturedDidChangeNotification,
+            object: nil
+        )
+        
     }
     
     
@@ -162,8 +170,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         nextVC?.roomName = self.roomName
         nextVC?.password = self.password
         
+        let beforeVC = segue.destination as? JoinedRoomViewController
+        beforeVC?.password = ""
     }
-    
     
     
 
@@ -251,7 +260,6 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
             print("メッセージ情報の保存に失敗しました。\(err)")
             return
         }
-            self.messageArrayForDelete.append(messageId)
             
         }
     }
@@ -270,21 +278,20 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
     }
     
     
+    
 }
 
 //ホームボタン、スクリーンショットの検出
 extension ChatViewController {
     
     
-    private func messageDocumentDelete (_ documentId: String) {
-        postRef.document(password).collection("messages").document(documentId).delete()
-    }
-    
-    
     @objc func didTakeScreenshot() {
+        //画面のパスワードと一致した場合のみ送信
+        print("スクリーンショットを保存しました(自動送信)")
         inputMessage(text: "スクリーンショットを保存しました(自動送信)")
     }
     @objc func didCapturedScreen() {
+        print("画面を録画しました。(自動送信)")
         inputMessage(text: "画面を録画しました。(自動送信)")
     }
 }

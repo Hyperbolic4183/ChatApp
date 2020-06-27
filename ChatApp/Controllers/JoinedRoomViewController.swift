@@ -30,7 +30,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         roomTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
-       
+        print("パスワードは\(password)")
         joinedRoomName = (userDefaults.array(forKey: "name") ?? []) as [String]
         
         joinedRoomPassword = (userDefaults.array(forKey: "password") ?? []) as [String]

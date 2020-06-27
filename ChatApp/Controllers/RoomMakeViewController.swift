@@ -58,6 +58,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         overrideUserInterfaceStyle = .light
     }
     func setupViews() {
+        
         roomNameTextFieldBool = false
         roompasswordTextFieldBool = false
         roomNameTextField.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
