@@ -75,7 +75,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print("ドキュメントパスワードは\(password)")
+        overrideUserInterfaceStyle = .light
+        
         navigationItem.title = roomName
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 0.5)
         self.navigationController?.navigationBar.tintColor = .white
@@ -214,7 +215,9 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
                         return m1.sentDate < m2.sentDate
                     })
                     self.messagesCollectionView.reloadData()
-                    
+                    DispatchQueue.main.async {
+                    self.messagesCollectionView.scrollToBottom()
+                    }
                 case .modified, .removed:
                     print("nothing to do")
                 }

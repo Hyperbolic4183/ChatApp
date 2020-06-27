@@ -26,6 +26,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     var ref = Database.database().reference()
     let postRef = Firestore.firestore().collection("Rooms")
     var userDefaults = UserDefaults.standard
+    var joinedRoomNamePasswordArray = [String?]()
 
     
     var password: String = ""
@@ -54,6 +55,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         checkButton()
         roomPasswordTextField.delegate = self
         roomNameTextField.delegate = self
+        overrideUserInterfaceStyle = .light
     }
     func setupViews() {
         roomNameTextFieldBool = false
@@ -108,27 +110,36 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func makeRoomButton(_ sender: Any) {
-        print("新しいルーム名は\(self.roomNameTextField.text!)")
-        print("新しいパスワードは\(self.roomPasswordTextField.text!)")
+        password = roomNameTextField.text!+roomPasswordTextField.text!
+        var joinedRoomNameArray = self.userDefaults.array(forKey: "name") as? [String] ?? []
+        var joinedRoomPasswordArray = self.userDefaults.array(forKey: "password") as? [String] ?? []
+        for i in 0 ..< joinedRoomNameArray.count {
+            joinedRoomNamePasswordArray.append(joinedRoomNameArray[i] + joinedRoomPasswordArray[i])
+        }
+        
         makeRoomButton.isEnabled = false
         makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
        
-        password = roomNameTextField.text!+roomPasswordTextField.text!
+        
         
         SVProgressHUD.show()
         
         postRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("エラーは\(err)")
+                SVProgressHUD.showError(withStatus: "ルームが見つかりませんでした。")
                 return
             }
-                for document in querySnapshot!.documents {
-
-                    if self.password == document.documentID {
-                        print("同じものが見つかった")
-                        SVProgressHUD.showError(withStatus: "パスワードを変更してください")
-                        return
-                    }
+            print("テスト")
+            for joinedRoom in self.joinedRoomNamePasswordArray {
+                print("パスワードは\(self.password)で参加しているルームは\(joinedRoom!)")
+                if self.password == joinedRoom {
+                    print("同じものが見つかった")
+                    SVProgressHUD.showError(withStatus: "既に参加しています。")
+                    return
+                    
+            }
+                
             }
             SVProgressHUD.dismiss()
             print("パスワードに被りはないです")
@@ -136,11 +147,9 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             
             self.postRef.document(self.password).setData(self.postDic)
             //追加　ルーム名とパスワードをUserdefaultsに保存
-            print("新しいパスワードは\(self.roomPasswordTextField.text!)")
-            print("新しいルーム名は\(self.roomNameTextField.text!)")
             
             //UserDefaultに入ったことのある部屋の名前とパスワードを格納
-            var joinedRoomNameArray = self.userDefaults.array(forKey: "name") as? [String] ?? []
+            
             joinedRoomNameArray.append(self.roomNameTextField.text!)
             self.userDefaults.set(joinedRoomNameArray, forKey: "name")
             
@@ -148,8 +157,8 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             var joinedRoomPasswordArray = self.userDefaults.array(forKey: "password") as? [String] ?? []
             joinedRoomPasswordArray.append(self.roomPasswordTextField.text!)
             self.userDefaults.set(joinedRoomPasswordArray, forKey: "password")
-             //追加
-            //self.performSegue(withIdentifier: "make", sender: nil)
+            self.roomNameTextField.text! = ""
+            self.roomPasswordTextField.text! = ""
             return
             
         }

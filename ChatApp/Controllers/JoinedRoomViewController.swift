@@ -20,7 +20,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     let cellSpacingHeight: CGFloat = 5
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 149/255, blue: 124/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -82,7 +82,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44 // 適当なセルの高さ
+        return 44
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
