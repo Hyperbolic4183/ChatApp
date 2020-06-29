@@ -16,7 +16,4 @@ UITabBar.appearance().barTintColor = UIColor(red: 174/255, green: 238/255, blue:
         UITabBar.appearance().tintColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
         
     }
-    
-
-
 }

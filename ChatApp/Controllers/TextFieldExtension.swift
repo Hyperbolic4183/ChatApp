@@ -44,31 +44,6 @@ extension UITextField {
     }
     
     
-//    
-//    @IBInspectable var minLength: Int {
-//        get {
-//            guard let length = minLengths[self] else {
-//                return Int.min
-//            }
-//            
-//            return length
-//        }
-//        set {
-//            minLengths[self] = newValue
-//            
-//            addTarget(self, action: #selector(lowestLength), for: .editingChanged)
-//        }
-//    }
-//    @objc func lowestLength(textField: UITextField) {
-//        guard let prospectiveText = textField.text, prospectiveText.count < minLength else {
-//            return
-//        }
-//        let selection = selectedTextRange
-//        let minCharIndex = prospectiveText.index(prospectiveText.startIndex, offsetBy: minLength)
-//        
-//        
-//        selectedTextRange = selection
-//    }
-    
+
 
 }

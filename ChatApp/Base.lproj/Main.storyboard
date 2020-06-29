@@ -10,7 +10,7 @@
         <!--Chat View Controller-->
         <scene sceneID="M7y-jk-242">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="Swv-TS-Nom" customClass="ChatViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="Swv-TS-Nom" customClass="ChatViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DkC-tu-DGZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,87 +36,81 @@
         <!--ルームを作成する-->
         <scene sceneID="4kR-br-uiC">
             <objects>
-                <viewController storyboardIdentifier="RoomMakeViewController" modalPresentationStyle="fullScreen" id="8Wb-92-BFl" customClass="RoomMakeViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoomMakeViewController" modalPresentationStyle="fullScreen" id="8Wb-92-BFl" customClass="RoomMakeViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OLC-OB-0by">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力して下さい(必須)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HII-ae-mqS">
-                                <rect key="frame" x="40" y="128" width="334" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="So5-Kz-ziZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfB-7n-WUy">
-                                <rect key="frame" x="40" y="488" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Ohd-2d-x1b"/>
-                                </constraints>
-                                <state key="normal" title="ルームを作る・参加する">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="makeRoomButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="BKr-Kn-qFz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiK-nc-ZG0">
-                                <rect key="frame" x="40" y="218" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.68235294117647061" green="0.93333333333333335" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="rEN-p5-Ntp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="ルーム名を自動生成する">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="roomNameAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="kxy-Do-0fU"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力してください(10文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSr-Zw-E7x">
-                                <rect key="frame" x="40" y="308" width="334" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="hOW-KX-gSX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-cu-9e0">
-                                <rect key="frame" x="40" y="398" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="b5d-CW-0de"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="パスワードを自動生成する">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="roomPasswordAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="VBZ-Bc-1sJ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="50" verticalHuggingPriority="50" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="50" axis="vertical" distribution="equalCentering" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="zLX-zA-Ei1">
+                                <rect key="frame" x="40" y="138" width="334" height="575"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="273" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ルーム名を入力して下さい(必須)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HII-ae-mqS">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="vps-Pt-qvh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="273" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiK-nc-ZG0">
+                                        <rect key="frame" x="0.0" y="131.5" width="334" height="50"/>
+                                        <color key="backgroundColor" red="0.68235294117647061" green="0.93333333333333335" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="S6N-xJ-O5C"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="ルーム名を自動生成する">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="roomNameAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="kxy-Do-0fU"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="273" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力してください(10文字以上)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSr-Zw-E7x">
+                                        <rect key="frame" x="0.0" y="262.5" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="iyE-GU-DqH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="273" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-cu-9e0">
+                                        <rect key="frame" x="0.0" y="394" width="334" height="50"/>
+                                        <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="17O-cC-bQI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="パスワードを自動生成する">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="roomPasswordAutoButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="VBZ-Bc-1sJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="273" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfB-7n-WUy">
+                                        <rect key="frame" x="0.0" y="525" width="334" height="50"/>
+                                        <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="UuD-Z5-4P5"/>
+                                        </constraints>
+                                        <state key="normal" title="ルームを作る・参加する">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="makeRoomButton:" destination="8Wb-92-BFl" eventType="touchUpInside" id="BKr-Kn-qFz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.31764705882352939" green="0.75686274509803919" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="b9X-cu-9e0" firstAttribute="top" secondItem="RSr-Zw-E7x" secondAttribute="bottom" constant="40" id="3PN-3S-T3s"/>
-                            <constraint firstItem="HII-ae-mqS" firstAttribute="top" secondItem="hIv-yG-Xce" secondAttribute="top" constant="40" id="3TH-pI-8A4"/>
-                            <constraint firstItem="vfB-7n-WUy" firstAttribute="leading" secondItem="RSr-Zw-E7x" secondAttribute="leading" id="AUu-aG-uRj"/>
-                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="RSr-Zw-E7x" secondAttribute="trailing" constant="40" id="Aoz-4Y-FJ6"/>
-                            <constraint firstItem="qiK-nc-ZG0" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="BtP-oW-LEj"/>
-                            <constraint firstItem="b9X-cu-9e0" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="DaO-cd-KNl"/>
-                            <constraint firstItem="RSr-Zw-E7x" firstAttribute="top" secondItem="qiK-nc-ZG0" secondAttribute="bottom" constant="40" id="HXV-40-uWG"/>
-                            <constraint firstItem="vfB-7n-WUy" firstAttribute="trailing" secondItem="RSr-Zw-E7x" secondAttribute="trailing" id="OVB-BS-xM9"/>
-                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="HII-ae-mqS" secondAttribute="trailing" constant="40" id="TBi-vy-rtd"/>
-                            <constraint firstItem="HII-ae-mqS" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="TUe-1t-I53"/>
-                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="qiK-nc-ZG0" secondAttribute="trailing" constant="40" id="cfn-Al-u9O"/>
-                            <constraint firstItem="vfB-7n-WUy" firstAttribute="top" secondItem="b9X-cu-9e0" secondAttribute="bottom" constant="40" id="l3x-oj-vIU"/>
-                            <constraint firstItem="RSr-Zw-E7x" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="y04-Gv-BNt"/>
-                            <constraint firstItem="qiK-nc-ZG0" firstAttribute="top" secondItem="HII-ae-mqS" secondAttribute="bottom" constant="40" id="zCy-YQ-1iw"/>
-                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="b9X-cu-9e0" secondAttribute="trailing" constant="40" id="zgB-FD-TdQ"/>
+                            <constraint firstItem="zLX-zA-Ei1" firstAttribute="top" secondItem="hIv-yG-Xce" secondAttribute="top" constant="50" id="0PW-6x-UJJ"/>
+                            <constraint firstItem="zLX-zA-Ei1" firstAttribute="leading" secondItem="hIv-yG-Xce" secondAttribute="leading" constant="40" id="cfj-8E-ZFc"/>
+                            <constraint firstItem="hIv-yG-Xce" firstAttribute="trailing" secondItem="zLX-zA-Ei1" secondAttribute="trailing" constant="40" id="m45-9I-Ifr"/>
+                            <constraint firstItem="hIv-yG-Xce" firstAttribute="bottom" secondItem="zLX-zA-Ei1" secondAttribute="bottom" constant="100" id="nxX-T0-XmI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hIv-yG-Xce"/>
                     </view>
@@ -156,7 +150,7 @@
         <!--チャットルーム-->
         <scene sceneID="rQp-kQ-qAj">
             <objects>
-                <viewController storyboardIdentifier="JoinedRoomViewController" id="HIL-NC-iXx" customClass="JoinedRoomViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinedRoomViewController" id="HIL-NC-iXx" customClass="JoinedRoomViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="95b-H7-Rru">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,7 +197,7 @@
         <!--ルーム情報-->
         <scene sceneID="wvB-Y4-Tl1">
             <objects>
-                <viewController storyboardIdentifier="PauseViewController" modalPresentationStyle="fullScreen" id="J6a-7q-rr2" customClass="PauseViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PauseViewController" modalPresentationStyle="fullScreen" id="J6a-7q-rr2" customClass="PauseViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="34W-xR-xyI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,7 +285,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="AsW-Bw-aYj">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="n6p-Y9-R0E" customClass="TabBarViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="n6p-Y9-R0E" customClass="TabBarViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mKZ-vr-IYm">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

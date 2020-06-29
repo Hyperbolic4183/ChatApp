@@ -56,7 +56,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         return self.joinedRoomName.count
     }
     
-    //追加
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:UITableViewCell = (self.roomTableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?)!
@@ -64,7 +64,6 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         // note that indexPath.section is used rather than indexPath.row
         cell.textLabel?.text = self.joinedRoomName[indexPath.section]
         
-        // add border and color
         cell.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOpacity = 0.6
@@ -72,9 +71,6 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.clipsToBounds = true
         return cell
     }
-    
-    
-    //追加
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

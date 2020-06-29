@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import MessageKit
 import InputBarAccessoryView
-import SwiftUI
+
 
 struct Sender: SenderType {
     var senderId: String
@@ -44,9 +44,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     var userDefaults = UserDefaults.standard
     
     var userDefaultsRoomNameArray = [String]()
-
-    let width = UIScreen.main.bounds.size.width
-    let height = UIScreen.main.bounds.size.height
     var databaseRef: DatabaseReference!
     var ref = Database.database().reference()
     let postRef = Firestore.firestore().collection("Rooms")
@@ -129,6 +126,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear\(password)")
+            //スクショ・録画の監視をオフにする
         NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
         
         NotificationCenter.default.addObserver(
@@ -183,7 +181,7 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
     
     
     
-    //send
+    //メッセージを送信
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
    
         inputMessage(text: inputBar.inputTextView.text)

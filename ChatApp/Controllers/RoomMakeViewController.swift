@@ -79,7 +79,6 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         makeRoomButton.layer.shadowColor = UIColor.black.cgColor
         makeRoomButton.layer.shadowOpacity = 0.6
         makeRoomButton.layer.shadowRadius = 4
-        //makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
         
         
        
@@ -117,14 +116,14 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         for i in 0 ..< joinedRoomNameArray.count {
             joinedRoomNamePasswordArray.append(joinedRoomNameArray[i] + joinedRoomPasswordArray[i])
         }
-        
+
         makeRoomButton.isEnabled = false
         makeRoomButton.setTitleColor(UIColor.gray, for: .normal)
        
         
-        
+
         SVProgressHUD.show()
-        
+        print("test")
         postRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("エラーは\(err)")
@@ -138,22 +137,22 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
                     print("同じものが見つかった")
                     SVProgressHUD.showError(withStatus: "既に参加しています。")
                     return
-                    
+
             }
-                
+
             }
             SVProgressHUD.dismiss()
             print("パスワードに被りはないです")
-            
-            
+
+
             self.postRef.document(self.password).setData(self.postDic)
             //追加　ルーム名とパスワードをUserdefaultsに保存
-            
+
             //UserDefaultに入ったことのある部屋の名前とパスワードを格納
-            
+
             joinedRoomNameArray.append(self.roomNameTextField.text!)
             self.userDefaults.set(joinedRoomNameArray, forKey: "name")
-            
+
             //パスワードを格納
             var joinedRoomPasswordArray = self.userDefaults.array(forKey: "password") as? [String] ?? []
             joinedRoomPasswordArray.append(self.roomPasswordTextField.text!)
@@ -161,14 +160,14 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             self.roomNameTextField.text! = ""
             self.roomPasswordTextField.text! = ""
             return
-            
+
         }
 
         
        
     }
     
-    
+     
     
     
     
@@ -177,10 +176,10 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         
         switch textField.tag {
         case 0:
-            if textLength < 1 {
-                roomNameTextFieldBool = false
-            } else {
+            if textLength >= 1 {
                 roomNameTextFieldBool = true
+            } else {
+                roomNameTextFieldBool = false
             }
             checkButton()
         case 1:

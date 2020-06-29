@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  ChatApp
 //
-//  Created by 大塚周 on 2020/06/17.
+//  Created by 大塚周 on 2020/06/29.
 //  Copyright © 2020 大塚周. All rights reserved.
 //
 
@@ -42,4 +42,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-
