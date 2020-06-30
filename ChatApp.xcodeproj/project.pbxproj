@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470831DB24AAC8FC00D8046B /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DA24AAC8FC00D8046B /* ReportViewController.swift */; };
+		470831DD24AACFA200D8046B /* reportCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DC24AACFA200D8046B /* reportCompletedViewController.swift */; };
+		470831DF24AAD7A100D8046B /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */; };
+		470831E124AB0E5B00D8046B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831E024AB0E5B00D8046B /* ViewController.swift */; };
 		471F089924A5EAB800987002 /* NavigationChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F089824A5EAB800987002 /* NavigationChatViewController.swift */; };
 		471F089B24A5F05C00987002 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F089A24A5F05C00987002 /* TabBarViewController.swift */; };
 		472427AF24A4AD3E00A57AD8 /* JoinedRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */; };
@@ -23,13 +27,16 @@
 		472AC659249BB2D600F6172D /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC658249BB2D600F6172D /* PauseViewController.swift */; };
 		4764BB23249F1C6600FD96DC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764BB22249F1C6600FD96DC /* Message.swift */; };
 		47698DB024A025D800E16BB9 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47698DAF24A025D800E16BB9 /* TextFieldExtension.swift */; };
-		47E168D724A95206004BFA67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E168D624A95206004BFA67 /* ViewController.swift */; };
 		FCF86813779D147B79663DFC /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286E6CF5ED94A55BE08AB6AB /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08858BDBB9F40DF2A3915B50 /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		286E6CF5ED94A55BE08AB6AB /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		470831DA24AAC8FC00D8046B /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		470831DC24AACFA200D8046B /* reportCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reportCompletedViewController.swift; sourceTree = "<group>"; };
+		470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
+		470831E024AB0E5B00D8046B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		471C4AFE24A85235001F39A6 /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatApp.entitlements; sourceTree = "<group>"; };
 		471F089824A5EAB800987002 /* NavigationChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationChatViewController.swift; sourceTree = "<group>"; };
 		471F089A24A5F05C00987002 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +56,6 @@
 		472AC658249BB2D600F6172D /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		4764BB22249F1C6600FD96DC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		47698DAF24A025D800E16BB9 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
-		47E168D624A95206004BFA67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8E9B86AA8724DA83E105C850 /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +118,10 @@
 				472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */,
 				471F089824A5EAB800987002 /* NavigationChatViewController.swift */,
 				471F089A24A5F05C00987002 /* TabBarViewController.swift */,
-				47E168D624A95206004BFA67 /* ViewController.swift */,
+				470831DA24AAC8FC00D8046B /* ReportViewController.swift */,
+				470831DC24AACFA200D8046B /* reportCompletedViewController.swift */,
+				470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */,
+				470831E024AB0E5B00D8046B /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,17 +260,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				472427AF24A4AD3E00A57AD8 /* JoinedRoomViewController.swift in Sources */,
+				470831DB24AAC8FC00D8046B /* ReportViewController.swift in Sources */,
 				472AC657249BB2AC00F6172D /* RoomMakeViewController.swift in Sources */,
 				472AC5D224996B9600F6172D /* AppDelegate.swift in Sources */,
+				470831DF24AAD7A100D8046B /* TermsOfServiceViewController.swift in Sources */,
 				47698DB024A025D800E16BB9 /* TextFieldExtension.swift in Sources */,
 				4764BB23249F1C6600FD96DC /* Message.swift in Sources */,
+				470831DD24AACFA200D8046B /* reportCompletedViewController.swift in Sources */,
 				472AC64A249B4BAC00F6172D /* ChatViewController.swift in Sources */,
 				472AC650249B77B900F6172D /* MockMessage.swift in Sources */,
 				471F089924A5EAB800987002 /* NavigationChatViewController.swift in Sources */,
-				47E168D724A95206004BFA67 /* ViewController.swift in Sources */,
 				472AC64E249B773600F6172D /* TestChatViewController.swift in Sources */,
 				471F089B24A5F05C00987002 /* TabBarViewController.swift in Sources */,
 				472AC5D424996B9600F6172D /* SceneDelegate.swift in Sources */,
+				470831E124AB0E5B00D8046B /* ViewController.swift in Sources */,
 				472AC659249BB2D600F6172D /* PauseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

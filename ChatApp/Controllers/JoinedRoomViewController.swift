@@ -13,15 +13,19 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     
 
     @IBOutlet weak var roomTableView: UITableView!
+    var reportBool = false
     var userDefaults = UserDefaults.standard
     var joinedRoomName: [String?] = []
     var joinedRoomPassword: [String?] = []
     var password = ""
     let cellSpacingHeight: CGFloat = 5
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()//追加
+        
+        
+        
         overrideUserInterfaceStyle = .light
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 149/255, blue: 124/255, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
@@ -30,6 +34,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         roomTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         print("パスワードは\(password)")
         joinedRoomName = (userDefaults.array(forKey: "name") ?? []) as [String]
         
@@ -48,8 +53,6 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         roomTableView.reloadData()
-        
-       
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

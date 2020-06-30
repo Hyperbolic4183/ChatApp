@@ -75,7 +75,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         overrideUserInterfaceStyle = .light
         
         navigationItem.title = roomName
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 0.5)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white

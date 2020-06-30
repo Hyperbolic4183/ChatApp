@@ -46,7 +46,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = UIColor(red: 24/255, green: 149/255, blue: 124/255, alpha: 1)
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 149/255, blue: 124/255, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
@@ -113,6 +113,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         password = roomNameTextField.text!+roomPasswordTextField.text!
         var joinedRoomNameArray = self.userDefaults.array(forKey: "name") as? [String] ?? []
         var joinedRoomPasswordArray = self.userDefaults.array(forKey: "password") as? [String] ?? []
+        
         for i in 0 ..< joinedRoomNameArray.count {
             joinedRoomNamePasswordArray.append(joinedRoomNameArray[i] + joinedRoomPasswordArray[i])
         }
@@ -130,18 +131,16 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
                 SVProgressHUD.showError(withStatus: "ルームが見つかりませんでした。")
                 return
             }
-            print("テスト")
             for joinedRoom in self.joinedRoomNamePasswordArray {
                 print("パスワードは\(self.password)で参加しているルームは\(joinedRoom!)")
                 if self.password == joinedRoom {
                     print("同じものが見つかった")
                     SVProgressHUD.showError(withStatus: "既に参加しています。")
                     return
-
             }
 
             }
-            SVProgressHUD.dismiss()
+            SVProgressHUD.showSuccess(withStatus: "成功しました")
             print("パスワードに被りはないです")
 
 
@@ -149,13 +148,15 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             //追加　ルーム名とパスワードをUserdefaultsに保存
 
             //UserDefaultに入ったことのある部屋の名前とパスワードを格納
-
-            joinedRoomNameArray.append(self.roomNameTextField.text!)
+            
+            joinedRoomNameArray.insert(self.roomNameTextField.text!, at: 0)
+            
             self.userDefaults.set(joinedRoomNameArray, forKey: "name")
 
             //パスワードを格納
             var joinedRoomPasswordArray = self.userDefaults.array(forKey: "password") as? [String] ?? []
-            joinedRoomPasswordArray.append(self.roomPasswordTextField.text!)
+            joinedRoomPasswordArray.insert(self.roomPasswordTextField.text!, at: 0)
+            //joinedRoomPasswordArray.append(self.roomPasswordTextField.text!)
             self.userDefaults.set(joinedRoomPasswordArray, forKey: "password")
             self.roomNameTextField.text! = ""
             self.roomPasswordTextField.text! = ""

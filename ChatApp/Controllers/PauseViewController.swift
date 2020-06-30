@@ -60,6 +60,8 @@ class PauseViewController: UIViewController {
     @IBOutlet weak var leaveRoomButton: UIButton!
     @IBOutlet weak var roomNameLabel: UILabel!
     @IBOutlet weak var roomPasswordLabel: UILabel!
+    @IBAction func reportButton(_ sender: Any) {
+    }
     
     
     
