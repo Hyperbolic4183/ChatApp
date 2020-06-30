@@ -226,9 +226,6 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             return
         }
     }
-    //override func viewWillDisappear(_ animated: Bool) {
-     //   roomNameTextField.text = ""
-    //}
     
     func randomString(length: Int) -> String {
             let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

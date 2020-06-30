@@ -81,7 +81,10 @@ class PauseViewController: UIViewController {
         let index = navigationController!.viewControllers.count - 3
         navigationController?.popToViewController(navigationController!.viewControllers[index], animated: true)
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC: ReportViewController = segue.destination as! ReportViewController
+        nextVC.password = self.password
+    }
     
    
 
