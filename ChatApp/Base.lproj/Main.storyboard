@@ -115,7 +115,14 @@
                         <viewLayoutGuide key="safeArea" id="hIv-yG-Xce"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="5D9-Gf-khE"/>
-                    <navigationItem key="navigationItem" title="ルームを作成する" id="mD3-xM-pfu"/>
+                    <navigationItem key="navigationItem" title="ルームを作成する" id="mD3-xM-pfu">
+                        <barButtonItem key="leftBarButtonItem" image="exclamationmark.triangle" catalog="system" id="lxW-3u-83l">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="j5D-nj-RIw" kind="show" id="eAm-PI-n6w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="makeRoomButton" destination="vfB-7n-WUy" id="GkY-sX-i1u"/>
                         <outlet property="roomNameAutoButton" destination="qiK-nc-ZG0" id="KV6-R0-bh1"/>
@@ -245,7 +252,6 @@
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="reportButton:" destination="J6a-7q-rr2" eventType="touchUpInside" id="Tur-UR-eVL"/>
                                     <segue destination="Iqa-aw-3GU" kind="modal" id="aIo-o3-3BR"/>
                                 </connections>
                             </button>
@@ -270,6 +276,7 @@
                     <navigationItem key="navigationItem" title="ルーム情報" id="NAx-Y0-k5X"/>
                     <connections>
                         <outlet property="leaveRoomButton" destination="cqI-yN-zyT" id="7dz-SS-9YC"/>
+                        <outlet property="reportButton" destination="oUn-rL-Gwy" id="lCG-jZ-1xj"/>
                         <outlet property="roomNameLabel" destination="HvM-Ck-V8s" id="qEu-Cc-Wxa"/>
                         <outlet property="roomPasswordLabel" destination="Jaf-2M-bFb" id="l40-KD-Y9N"/>
                     </connections>
@@ -289,65 +296,65 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="d2t-l9-nCz">
                                 <rect key="frame" x="40" y="40" width="334" height="366"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqe-V2-Xk0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqe-V2-Xk0">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="KI2-c7-QVn"/>
                                         </constraints>
-                                        <state key="normal" title="スパム/宣伝目的" image="check_off">
+                                        <state key="normal" title=" スパム/宣伝目的" image="check_off">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="radio1Button:" destination="Iqa-aw-3GU" eventType="touchUpInside" id="sK3-2x-PhQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTB-gq-aNG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTB-gq-aNG">
                                         <rect key="frame" x="0.0" y="79" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="E5k-H0-kjQ"/>
                                         </constraints>
-                                        <state key="normal" title="性的嫌がらせ" image="check_off">
+                                        <state key="normal" title=" 性的嫌がらせ" image="check_off">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="radio2Button:" destination="Iqa-aw-3GU" eventType="touchUpInside" id="xtm-Uj-LeO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGA-2U-K6p">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGA-2U-K6p">
                                         <rect key="frame" x="0.0" y="158" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="vpX-iu-dDK"/>
                                         </constraints>
-                                        <state key="normal" title="迷惑行為" image="check_off">
+                                        <state key="normal" title=" 迷惑行為" image="check_off">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="radio3Button:" destination="Iqa-aw-3GU" eventType="touchUpInside" id="xPb-6V-bT7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6L-mj-438">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6L-mj-438">
                                         <rect key="frame" x="0.0" y="237" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="cia-dR-rfD"/>
                                         </constraints>
-                                        <state key="normal" title="暴力または危険な行為" image="check_off">
+                                        <state key="normal" title=" 暴力または危険な行為" image="check_off">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="radio4Button:" destination="Iqa-aw-3GU" eventType="touchUpInside" id="c92-7J-zEh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iF7-YY-cLf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iF7-YY-cLf">
                                         <rect key="frame" x="0.0" y="316" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="lti-ie-2ys"/>
                                         </constraints>
-                                        <state key="normal" title="その他" image="check_off">
+                                        <state key="normal" title=" その他" image="check_off">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -526,12 +533,61 @@
                     <connections>
                         <outlet property="agreeButton" destination="shI-2F-OvM" id="6N4-MS-iA4"/>
                         <outlet property="over18Button" destination="YhJ-Od-1Gd" id="JZX-O3-4T1"/>
+                        <outlet property="protocolContent" destination="vkO-C4-gBQ" id="An6-Hf-P24"/>
+                        <outlet property="protocolLabel" destination="spv-Pt-Gmq" id="8Kw-Lb-hoM"/>
                         <outlet property="startButton" destination="t8r-qH-3VS" id="0Cu-hT-KWp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BpX-oQ-In0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="419" y="1076"/>
+        </scene>
+        <!--Contact View Controller-->
+        <scene sceneID="fXw-Yd-jpG">
+            <objects>
+                <viewController id="j5D-nj-RIw" customClass="ContactViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uRE-Lb-7T5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XXT-QM-dF7">
+                                <rect key="frame" x="40" y="198" width="334" height="595"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利用規約" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH5-E7-CLF">
+                                <rect key="frame" x="40" y="128" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.93333333330000001" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rD1-Xz-eGr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.31764705879999999" green="0.75686274509999996" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dH5-E7-CLF" firstAttribute="top" secondItem="HOb-e5-NEx" secondAttribute="top" constant="40" id="JHy-Hw-Ape"/>
+                            <constraint firstItem="dH5-E7-CLF" firstAttribute="leading" secondItem="HOb-e5-NEx" secondAttribute="leading" constant="40" id="JaW-Ju-Zd6"/>
+                            <constraint firstItem="HOb-e5-NEx" firstAttribute="trailing" secondItem="XXT-QM-dF7" secondAttribute="trailing" constant="40" id="MiL-5P-gip"/>
+                            <constraint firstItem="XXT-QM-dF7" firstAttribute="leading" secondItem="HOb-e5-NEx" secondAttribute="leading" constant="40" id="Uuv-Fc-dOV"/>
+                            <constraint firstItem="HOb-e5-NEx" firstAttribute="trailing" secondItem="dH5-E7-CLF" secondAttribute="trailing" constant="40" id="dYE-1H-7lO"/>
+                            <constraint firstItem="XXT-QM-dF7" firstAttribute="top" secondItem="dH5-E7-CLF" secondAttribute="bottom" constant="20" id="daH-Wp-eCr"/>
+                            <constraint firstItem="HOb-e5-NEx" firstAttribute="bottom" secondItem="XXT-QM-dF7" secondAttribute="bottom" constant="20" id="fOz-4F-9dC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HOb-e5-NEx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4Bw-Kl-tIP"/>
+                    <connections>
+                        <outlet property="protocolTextView" destination="XXT-QM-dF7" id="NOv-Tg-kgz"/>
+                        <outlet property="protpcolLabel" destination="dH5-E7-CLF" id="CEP-0F-p3B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghc-IP-Eis" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1891" y="2674"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -541,6 +597,7 @@
         <image name="bubble.right" catalog="system" width="128" height="110"/>
         <image name="check_off" width="26" height="26"/>
         <image name="check_on" width="26" height="26"/>
+        <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
         <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
     </resources>
 </document>

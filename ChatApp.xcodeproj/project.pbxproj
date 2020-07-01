@@ -11,6 +11,7 @@
 		470831DD24AACFA200D8046B /* reportCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DC24AACFA200D8046B /* reportCompletedViewController.swift */; };
 		470831DF24AAD7A100D8046B /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */; };
 		470831E124AB0E5B00D8046B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831E024AB0E5B00D8046B /* ViewController.swift */; };
+		4708320524AC6D8700D8046B /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708320424AC6D8700D8046B /* ContactViewController.swift */; };
 		471F089924A5EAB800987002 /* NavigationChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F089824A5EAB800987002 /* NavigationChatViewController.swift */; };
 		471F089B24A5F05C00987002 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F089A24A5F05C00987002 /* TabBarViewController.swift */; };
 		472427AF24A4AD3E00A57AD8 /* JoinedRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */; };
@@ -37,6 +38,7 @@
 		470831DC24AACFA200D8046B /* reportCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reportCompletedViewController.swift; sourceTree = "<group>"; };
 		470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		470831E024AB0E5B00D8046B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4708320424AC6D8700D8046B /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		471C4AFE24A85235001F39A6 /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatApp.entitlements; sourceTree = "<group>"; };
 		471F089824A5EAB800987002 /* NavigationChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationChatViewController.swift; sourceTree = "<group>"; };
 		471F089A24A5F05C00987002 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				470831DC24AACFA200D8046B /* reportCompletedViewController.swift */,
 				470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */,
 				470831E024AB0E5B00D8046B /* ViewController.swift */,
+				4708320424AC6D8700D8046B /* ContactViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				472427AF24A4AD3E00A57AD8 /* JoinedRoomViewController.swift in Sources */,
 				470831DB24AAC8FC00D8046B /* ReportViewController.swift in Sources */,
 				472AC657249BB2AC00F6172D /* RoomMakeViewController.swift in Sources */,
+				4708320524AC6D8700D8046B /* ContactViewController.swift in Sources */,
 				472AC5D224996B9600F6172D /* AppDelegate.swift in Sources */,
 				470831DF24AAD7A100D8046B /* TermsOfServiceViewController.swift in Sources */,
 				47698DB024A025D800E16BB9 /* TextFieldExtension.swift in Sources */,

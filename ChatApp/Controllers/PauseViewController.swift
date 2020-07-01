@@ -47,6 +47,12 @@ class PauseViewController: UIViewController {
         leaveRoomButton.layer.shadowOpacity = 0.6
         leaveRoomButton.layer.shadowRadius = 4
         
+        reportButton.layer.cornerRadius = 5
+        reportButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        reportButton.layer.shadowColor = UIColor.black.cgColor
+        reportButton.layer.shadowOpacity = 0.6
+        reportButton.layer.shadowRadius = 4
+        
        
         roomNameLabel.text = "ルーム名は\(roomName)"
         roomPasswordLabel.text = "パスワードは\(roomPassword)"
@@ -60,8 +66,8 @@ class PauseViewController: UIViewController {
     @IBOutlet weak var leaveRoomButton: UIButton!
     @IBOutlet weak var roomNameLabel: UILabel!
     @IBOutlet weak var roomPasswordLabel: UILabel!
-    @IBAction func reportButton(_ sender: Any) {
-    }
+    @IBOutlet weak var reportButton: UIButton!
+    
     
     
     

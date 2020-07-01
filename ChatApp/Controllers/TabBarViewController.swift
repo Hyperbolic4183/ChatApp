@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class TabBarViewController: UITabBarController {
 
     var reportBool = false
+    var uid = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,10 +24,14 @@ UITabBar.appearance().barTintColor = UIColor(red: 174/255, green: 238/255, blue:
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("Tabuidは\(Auth.auth().currentUser?.uid)")
         let userDefaults = UserDefaults.standard
         let firstLunchKey = "firstLunchKey"
-        if userDefaults.bool(forKey: firstLunchKey) {
-        performSegue(withIdentifier: "agree", sender: self)
+        
+        if Auth.auth().currentUser == nil || userDefaults.bool(forKey: firstLunchKey) {
+            print("ログインしていない")
+            performSegue(withIdentifier: "agree", sender: self)
         }
     }
     

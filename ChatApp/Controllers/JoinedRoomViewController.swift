@@ -7,12 +7,14 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseAuth
 class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
 
     @IBOutlet weak var roomTableView: UITableView!
+    @IBOutlet weak var protocolButton: UIBarButtonItem!
     var reportBool = false
     var userDefaults = UserDefaults.standard
     var joinedRoomName: [String?] = []
@@ -35,22 +37,16 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("パスワードは\(password)")
         joinedRoomName = (userDefaults.array(forKey: "name") ?? []) as [String]
         
         joinedRoomPassword = (userDefaults.array(forKey: "password") ?? []) as [String]
+       if Auth.auth().currentUser == nil {
+           print("ログインしていない")
+      //  performSegue(withIdentifier: "notLogin", sender: self)
         
-        if joinedRoomName.count == 0 {
-        print("joinedRoomNameは\(joinedRoomName.count - 1)")
-        } else {
-            print("joinedRoomNameは\(joinedRoomName.count)")
-            
-        }
-        if joinedRoomPassword.count == 0 {
-        print("joinedRoomPasswordは\(joinedRoomPassword.count - 1)")
-        } else {
-            print("joinedRoomPasswordは\(joinedRoomPassword.count)")
-        }
+       } else {
+           print("ログインしていてidは\(Auth.auth().currentUser?.uid)")
+       }
         
         roomTableView.reloadData()
     }
@@ -103,6 +99,9 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         NextVC.roomPassword = self.joinedRoomPassword[indexPath!.section]!
         NextVC.password = "\(joinedRoomName[indexPath!.section]!)\(joinedRoomPassword[indexPath!.section]!)"
     }
+    
+    
+    
 
 
 }

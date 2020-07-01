@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 import MessageKit
 import InputBarAccessoryView
 
@@ -45,6 +46,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     
     var userDefaultsRoomNameArray = [String]()
     var databaseRef: DatabaseReference!
+    
     var ref = Database.database().reference()
     let postRef = Firestore.firestore().collection("Rooms")
     var userId = String()
@@ -80,7 +82,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
         ]
-        userId = UIDevice.current.identifierForVendor!.uuidString
+        userId = Auth.auth().currentUser?.uid as! String//UIDevice.current.identifierForVendor!.uuidString
         
         print("パスワードは\(password)")
         print("ルーム名は\(roomName)")
@@ -250,7 +252,7 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
         let messageId = randomString(length: 20)
         let docData = [
             "message": text,
-            "sender": UIDevice.current.identifierForVendor!.uuidString,
+            "sender": Auth.auth().currentUser?.uid /*UIDevice.current.identifierForVendor!.uuidString*/,
             "time": Timestamp()
             ] as [String : Any]
         postRef.document(password).collection("messages").document(messageId).setData(docData) {(err) in

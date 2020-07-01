@@ -51,6 +51,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
         ]
+        
         setupViews()
         checkButton()
         roomPasswordTextField.delegate = self
@@ -160,6 +161,9 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             self.userDefaults.set(joinedRoomPasswordArray, forKey: "password")
             self.roomNameTextField.text! = ""
             self.roomPasswordTextField.text! = ""
+            self.roomNameTextFieldBool = false
+            self.roompasswordTextFieldBool = false
+            
             return
 
         }
@@ -239,6 +243,11 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             }
             return randomString
     }
+    @IBAction func protocolButton(_ sender: Any) {
+        print("test")
+        //performSegue(withIdentifier: "protocol", sender: self)
+    }
+    
     
     
 }
