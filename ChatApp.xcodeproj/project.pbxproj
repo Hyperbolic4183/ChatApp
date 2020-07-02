@@ -12,6 +12,7 @@
 		470831DF24AAD7A100D8046B /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */; };
 		470831E124AB0E5B00D8046B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831E024AB0E5B00D8046B /* ViewController.swift */; };
 		4708320524AC6D8700D8046B /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708320424AC6D8700D8046B /* ContactViewController.swift */; };
+		4708320724ACBB1D00D8046B /* forbidenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708320624ACBB1D00D8046B /* forbidenViewController.swift */; };
 		471F089924A5EAB800987002 /* NavigationChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F089824A5EAB800987002 /* NavigationChatViewController.swift */; };
 		471F089B24A5F05C00987002 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471F089A24A5F05C00987002 /* TabBarViewController.swift */; };
 		472427AF24A4AD3E00A57AD8 /* JoinedRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */; };
@@ -39,6 +40,7 @@
 		470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		470831E024AB0E5B00D8046B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4708320424AC6D8700D8046B /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		4708320624ACBB1D00D8046B /* forbidenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forbidenViewController.swift; sourceTree = "<group>"; };
 		471C4AFE24A85235001F39A6 /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatApp.entitlements; sourceTree = "<group>"; };
 		471F089824A5EAB800987002 /* NavigationChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationChatViewController.swift; sourceTree = "<group>"; };
 		471F089A24A5F05C00987002 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */,
 				470831E024AB0E5B00D8046B /* ViewController.swift */,
 				4708320424AC6D8700D8046B /* ContactViewController.swift */,
+				4708320624ACBB1D00D8046B /* forbidenViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				472AC5D424996B9600F6172D /* SceneDelegate.swift in Sources */,
 				470831E124AB0E5B00D8046B /* ViewController.swift in Sources */,
 				472AC659249BB2D600F6172D /* PauseViewController.swift in Sources */,
+				4708320724ACBB1D00D8046B /* forbidenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,13 +429,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ChatApp/ChatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.01;
 				DEVELOPMENT_TEAM = B75CP82UAG;
 				INFOPLIST_FILE = ChatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = otsuka.amane.ChatApp;
 				PRODUCT_NAME = " ChatApp";
 				SWIFT_VERSION = 5.0;
@@ -446,13 +451,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ChatApp/ChatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.01;
 				DEVELOPMENT_TEAM = B75CP82UAG;
 				INFOPLIST_FILE = ChatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = otsuka.amane.ChatApp;
 				PRODUCT_NAME = " ChatApp";
 				SWIFT_VERSION = 5.0;

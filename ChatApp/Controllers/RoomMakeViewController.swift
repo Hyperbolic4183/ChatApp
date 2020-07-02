@@ -67,8 +67,6 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         roomNameTextField.layer.shadowOpacity = 0.6
         roomNameTextField.layer.shadowRadius = 4
         
-        
-        
         roomPasswordTextField.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         roomPasswordTextField.layer.shadowColor = UIColor.black.cgColor
         roomPasswordTextField.layer.shadowOpacity = 0.6

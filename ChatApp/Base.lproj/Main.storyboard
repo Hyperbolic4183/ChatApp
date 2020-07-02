@@ -194,7 +194,8 @@
                     <navigationItem key="navigationItem" title="チャットルーム" id="cVs-3q-psm"/>
                     <connections>
                         <outlet property="roomTableView" destination="Ddm-jJ-XL1" id="B18-J1-nU0"/>
-                        <segue destination="Swv-TS-Nom" kind="show" identifier="cellSegue" id="G0R-iI-T4g"/>
+                        <segue destination="Swv-TS-Nom" kind="show" identifier="cellSegue" id="d5a-ae-fOx"/>
+                        <segue destination="bQK-kW-A2G" kind="presentation" identifier="ban" id="HMj-4z-44o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cA-fp-2ft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -437,7 +438,7 @@
                     <connections>
                         <segue destination="Ce2-Vv-Aen" kind="relationship" relationship="viewControllers" id="DH1-JU-dLS"/>
                         <segue destination="DrF-Xi-F1C" kind="relationship" relationship="viewControllers" id="b9e-PF-nEf"/>
-                        <segue destination="bQK-kW-A2G" kind="show" identifier="agree" id="ZQ4-qn-0cb"/>
+                        <segue destination="bQK-kW-A2G" kind="show" identifier="agree" id="Mwj-mX-mef"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLO-7G-WO9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -540,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BpX-oQ-In0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="419" y="1076"/>
+            <point key="canvasLocation" x="1845" y="1252"/>
         </scene>
         <!--Contact View Controller-->
         <scene sceneID="fXw-Yd-jpG">
@@ -581,8 +582,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Bw-Kl-tIP"/>
                     <connections>
+                        <outlet property="protocolLabel" destination="dH5-E7-CLF" id="CEP-0F-p3B"/>
                         <outlet property="protocolTextView" destination="XXT-QM-dF7" id="NOv-Tg-kgz"/>
-                        <outlet property="protpcolLabel" destination="dH5-E7-CLF" id="CEP-0F-p3B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghc-IP-Eis" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -591,6 +592,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Mwj-mX-mef"/>
         <segue reference="lxy-ZD-ffs"/>
     </inferredMetricsTieBreakers>
     <resources>

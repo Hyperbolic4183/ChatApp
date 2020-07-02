@@ -42,10 +42,13 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         joinedRoomPassword = (userDefaults.array(forKey: "password") ?? []) as [String]
        if Auth.auth().currentUser == nil {
            print("ログインしていない")
-      //  performSegue(withIdentifier: "notLogin", sender: self)
+        
+        performSegue(withIdentifier: "ban", sender: nil)
         
        } else {
            print("ログインしていてidは\(Auth.auth().currentUser?.uid)")
+        
+        
        }
         
         roomTableView.reloadData()
@@ -73,6 +76,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         performSegue(withIdentifier: "cellSegue", sender: nil)
         
     }
@@ -92,12 +96,15 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "cellSegue" {
+
         let indexPath = self.roomTableView.indexPathForSelectedRow
         let NextVC = segue.destination as! ChatViewController
         NextVC.roomName = self.joinedRoomName[indexPath!.section]!
         NextVC.roomPassword = self.joinedRoomPassword[indexPath!.section]!
         NextVC.password = "\(joinedRoomName[indexPath!.section]!)\(joinedRoomPassword[indexPath!.section]!)"
+        } 
+        
     }
     
     
