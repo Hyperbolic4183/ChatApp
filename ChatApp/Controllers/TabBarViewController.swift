@@ -35,10 +35,7 @@ UITabBar.appearance().barTintColor = UIColor(red: 174/255, green: 238/255, blue:
         performSegue(withIdentifier: "agree", sender: self)
     } else if Auth.auth().currentUser == nil {
         print("ログインしていない")
-        
-        
-    }
-        
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

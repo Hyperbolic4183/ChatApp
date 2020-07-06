@@ -12,4 +12,5 @@ pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Database'
 pod 'SVProgressHUD','2.2.5'
+pod 'RealmSwift', '3.20.0'
 end

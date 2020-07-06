@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		470831DB24AAC8FC00D8046B /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DA24AAC8FC00D8046B /* ReportViewController.swift */; };
-		470831DD24AACFA200D8046B /* reportCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DC24AACFA200D8046B /* reportCompletedViewController.swift */; };
 		470831DF24AAD7A100D8046B /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */; };
 		470831E124AB0E5B00D8046B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470831E024AB0E5B00D8046B /* ViewController.swift */; };
 		4708320524AC6D8700D8046B /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708320424AC6D8700D8046B /* ContactViewController.swift */; };
@@ -22,13 +21,10 @@
 		472AC5DB24996B9700F6172D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472AC5DA24996B9700F6172D /* Assets.xcassets */; };
 		472AC5DE24996B9700F6172D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 472AC5DC24996B9700F6172D /* LaunchScreen.storyboard */; };
 		472AC64A249B4BAC00F6172D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC649249B4BAC00F6172D /* ChatViewController.swift */; };
-		472AC64E249B773600F6172D /* TestChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC64D249B773600F6172D /* TestChatViewController.swift */; };
-		472AC650249B77B900F6172D /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC64F249B77B900F6172D /* MockMessage.swift */; };
 		472AC652249BADD100F6172D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 472AC651249BADD100F6172D /* GoogleService-Info.plist */; };
 		472AC657249BB2AC00F6172D /* RoomMakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC656249BB2AC00F6172D /* RoomMakeViewController.swift */; };
 		472AC659249BB2D600F6172D /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC658249BB2D600F6172D /* PauseViewController.swift */; };
 		4764BB23249F1C6600FD96DC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764BB22249F1C6600FD96DC /* Message.swift */; };
-		47698DB024A025D800E16BB9 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47698DAF24A025D800E16BB9 /* TextFieldExtension.swift */; };
 		FCF86813779D147B79663DFC /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286E6CF5ED94A55BE08AB6AB /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +32,6 @@
 		08858BDBB9F40DF2A3915B50 /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		286E6CF5ED94A55BE08AB6AB /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		470831DA24AAC8FC00D8046B /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
-		470831DC24AACFA200D8046B /* reportCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reportCompletedViewController.swift; sourceTree = "<group>"; };
 		470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		470831E024AB0E5B00D8046B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4708320424AC6D8700D8046B /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -45,7 +40,7 @@
 		471F089824A5EAB800987002 /* NavigationChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationChatViewController.swift; sourceTree = "<group>"; };
 		471F089A24A5F05C00987002 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedRoomViewController.swift; sourceTree = "<group>"; };
-		472AC5CE24996B9600F6172D /*  ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = " ChatApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		472AC5CE24996B9600F6172D /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		472AC5D124996B9600F6172D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		472AC5D324996B9600F6172D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		472AC5D824996B9600F6172D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,13 +48,10 @@
 		472AC5DD24996B9700F6172D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		472AC5DF24996B9700F6172D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		472AC649249B4BAC00F6172D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		472AC64D249B773600F6172D /* TestChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestChatViewController.swift; sourceTree = "<group>"; };
-		472AC64F249B77B900F6172D /* MockMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
 		472AC651249BADD100F6172D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		472AC656249BB2AC00F6172D /* RoomMakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMakeViewController.swift; sourceTree = "<group>"; };
 		472AC658249BB2D600F6172D /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		4764BB22249F1C6600FD96DC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		47698DAF24A025D800E16BB9 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		8E9B86AA8724DA83E105C850 /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +80,7 @@
 		472AC5CF24996B9600F6172D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				472AC5CE24996B9600F6172D /*  ChatApp.app */,
+				472AC5CE24996B9600F6172D /* ChatApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,8 +97,6 @@
 				472AC5DC24996B9700F6172D /* LaunchScreen.storyboard */,
 				472AC5DF24996B9700F6172D /* Info.plist */,
 				472AC651249BADD100F6172D /* GoogleService-Info.plist */,
-				472AC64D249B773600F6172D /* TestChatViewController.swift */,
-				472AC64F249B77B900F6172D /* MockMessage.swift */,
 			);
 			path = ChatApp;
 			sourceTree = "<group>";
@@ -118,12 +108,10 @@
 				472AC649249B4BAC00F6172D /* ChatViewController.swift */,
 				472AC658249BB2D600F6172D /* PauseViewController.swift */,
 				4764BB22249F1C6600FD96DC /* Message.swift */,
-				47698DAF24A025D800E16BB9 /* TextFieldExtension.swift */,
 				472427AE24A4AD3E00A57AD8 /* JoinedRoomViewController.swift */,
 				471F089824A5EAB800987002 /* NavigationChatViewController.swift */,
 				471F089A24A5F05C00987002 /* TabBarViewController.swift */,
 				470831DA24AAC8FC00D8046B /* ReportViewController.swift */,
-				470831DC24AACFA200D8046B /* reportCompletedViewController.swift */,
 				470831DE24AAD7A100D8046B /* TermsOfServiceViewController.swift */,
 				470831E024AB0E5B00D8046B /* ViewController.swift */,
 				4708320424AC6D8700D8046B /* ContactViewController.swift */,
@@ -168,7 +156,7 @@
 			);
 			name = ChatApp;
 			productName = ChatApp;
-			productReference = 472AC5CE24996B9600F6172D /*  ChatApp.app */;
+			productReference = 472AC5CE24996B9600F6172D /* ChatApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -271,13 +259,9 @@
 				4708320524AC6D8700D8046B /* ContactViewController.swift in Sources */,
 				472AC5D224996B9600F6172D /* AppDelegate.swift in Sources */,
 				470831DF24AAD7A100D8046B /* TermsOfServiceViewController.swift in Sources */,
-				47698DB024A025D800E16BB9 /* TextFieldExtension.swift in Sources */,
 				4764BB23249F1C6600FD96DC /* Message.swift in Sources */,
-				470831DD24AACFA200D8046B /* reportCompletedViewController.swift in Sources */,
 				472AC64A249B4BAC00F6172D /* ChatViewController.swift in Sources */,
-				472AC650249B77B900F6172D /* MockMessage.swift in Sources */,
 				471F089924A5EAB800987002 /* NavigationChatViewController.swift in Sources */,
-				472AC64E249B773600F6172D /* TestChatViewController.swift in Sources */,
 				471F089B24A5F05C00987002 /* TabBarViewController.swift in Sources */,
 				472AC5D424996B9600F6172D /* SceneDelegate.swift in Sources */,
 				470831E124AB0E5B00D8046B /* ViewController.swift in Sources */,
@@ -438,7 +422,7 @@
 				);
 				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = otsuka.amane.ChatApp;
-				PRODUCT_NAME = " ChatApp";
+				PRODUCT_NAME = ChatApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -460,7 +444,7 @@
 				);
 				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = otsuka.amane.ChatApp;
-				PRODUCT_NAME = " ChatApp";
+				PRODUCT_NAME = ChatApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

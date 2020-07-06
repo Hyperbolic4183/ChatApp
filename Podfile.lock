@@ -133,6 +133,11 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.9)
   - Protobuf (3.12.0)
+  - Realm (3.20.0):
+    - Realm/Headers (= 3.20.0)
+  - Realm/Headers (3.20.0)
+  - RealmSwift (3.20.0):
+    - Realm (= 3.20.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -142,6 +147,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - MessageKit
+  - RealmSwift (= 3.20.0)
   - SVProgressHUD (= 2.2.5)
 
 SPEC REPOS:
@@ -170,6 +176,8 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
+    - Realm
+    - RealmSwift
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -197,8 +205,10 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
+  Realm: 8b2ca5bc6479a91f379b6b42b5922e396cd5ba5a
+  RealmSwift: 1949ef26a279e1845bd51d591b9103adfcd121df
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 233145ebb044f7c1bb0255bd8fce11783e507254
+PODFILE CHECKSUM: e9151c620bed0bf0b1d699e0f51b49bea6d4a09d
 
 COCOAPODS: 1.9.1

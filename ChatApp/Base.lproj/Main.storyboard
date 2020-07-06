@@ -10,7 +10,7 @@
         <!--Chat View Controller-->
         <scene sceneID="M7y-jk-242">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="Swv-TS-Nom" customClass="ChatViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="Swv-TS-Nom" customClass="ChatViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DkC-tu-DGZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,7 +36,7 @@
         <!--ルームを作成する-->
         <scene sceneID="4kR-br-uiC">
             <objects>
-                <viewController storyboardIdentifier="RoomMakeViewController" modalPresentationStyle="fullScreen" id="8Wb-92-BFl" customClass="RoomMakeViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoomMakeViewController" modalPresentationStyle="fullScreen" id="8Wb-92-BFl" customClass="RoomMakeViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OLC-OB-0by">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@
         <!--チャットルーム-->
         <scene sceneID="rQp-kQ-qAj">
             <objects>
-                <viewController storyboardIdentifier="JoinedRoomViewController" id="HIL-NC-iXx" customClass="JoinedRoomViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinedRoomViewController" id="HIL-NC-iXx" customClass="JoinedRoomViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="95b-H7-Rru">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,7 +205,7 @@
         <!--ルーム情報-->
         <scene sceneID="wvB-Y4-Tl1">
             <objects>
-                <viewController storyboardIdentifier="PauseViewController" modalPresentationStyle="fullScreen" id="J6a-7q-rr2" customClass="PauseViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PauseViewController" modalPresentationStyle="fullScreen" id="J6a-7q-rr2" customClass="PauseViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="34W-xR-xyI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -289,7 +289,7 @@
         <!--Report View Controller-->
         <scene sceneID="pYX-cz-8tR">
             <objects>
-                <viewController storyboardIdentifier="ReportViewController" id="Iqa-aw-3GU" customClass="ReportViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportViewController" id="Iqa-aw-3GU" customClass="ReportViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gdg-gQ-clb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,7 +427,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="AsW-Bw-aYj">
             <objects>
-                <tabBarController storyboardIdentifier="agree" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="n6p-Y9-R0E" customClass="TabBarViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="agree" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="n6p-Y9-R0E" customClass="TabBarViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="tl3-Wi-pcc"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mKZ-vr-IYm">
@@ -448,7 +448,7 @@
         <!--View Controller-->
         <scene sceneID="dz7-xg-fpS">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="bQK-kW-A2G" customClass="ViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="bQK-kW-A2G" customClass="ViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xhn-re-4yG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -546,7 +546,7 @@
         <!--Contact View Controller-->
         <scene sceneID="fXw-Yd-jpG">
             <objects>
-                <viewController id="j5D-nj-RIw" customClass="ContactViewController" customModule="_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j5D-nj-RIw" customClass="ContactViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uRE-Lb-7T5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -592,7 +592,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Mwj-mX-mef"/>
+        <segue reference="HMj-4z-44o"/>
         <segue reference="lxy-ZD-ffs"/>
     </inferredMetricsTieBreakers>
     <resources>
