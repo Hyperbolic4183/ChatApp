@@ -16,6 +16,7 @@ import InputBarAccessoryView
 
 struct Sender: SenderType {
     var senderId: String
+    
 }
 
 
@@ -60,20 +61,23 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     var messageArrayForDelete: [String] = []
     var senderId = ""
     
-    let currentUser = Sender(senderId: "self")
     
-    let otherUser = Sender(senderId: "other")
-    
+    var usernumber = ""
     var password = ""
     var roomName = ""
     var roomPassword = ""
     var messages = [MessageType]()
-   
-    
+    var filteringBool = Bool()
+    var messageArrayforDelete:[String] = []
+    let currentUser = Sender(senderId: "self")
+    var blockUserArray: [String] = []
+    let otherUser = Sender(senderId: "other")
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        
         overrideUserInterfaceStyle = .light
         
         navigationItem.title = roomName
@@ -127,6 +131,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        usernumber = String(userDefaults.integer(forKey: "usernumber"))
         print("viewWillAppear\(password)")
             //スクショ・録画の監視をオフにする
         NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
@@ -137,7 +142,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
             name: UIScreen.capturedDidChangeNotification,
             object: nil
         )
-        
+        print("filteringBoolは\(filteringBool)")
     }
     
     
@@ -158,7 +163,93 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         
         return .bubbleTail(corner, .curved)
     }
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let name = String(userDefaults.integer(forKey: "usernumber"))
+        
+        return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10),
+        NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+    }
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 16
+    }
+    func didTapMessage(in cell: MessageCollectionViewCell) {
+        print("Message tapped")
+        let indexPath = messagesCollectionView.indexPath(for: cell)![0]
+        print("indexPathは\(indexPath)")
+        print("documentは\(messageArrayForDelete[indexPath])")
+        print(messageArrayForDelete)
+       // postRef.document(password).collection("messages").document(messageArrayForDelete[indexPath]).delete()
+        //追加
+        // ① UIAlertControllerクラスのインスタンスを生成
+           // タイトル, メッセージ, Alertのスタイルを指定する
+           // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
+        let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "保存してもいいですか？", preferredStyle:  UIAlertController.Style.actionSheet)
+
+           // ② Actionの設定
+           // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+           // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+           // OKボタン
+        let reportAction: UIAlertAction = UIAlertAction(title: "通報する", style: UIAlertAction.Style.default, handler:{
+               // ボタンが押された時の処理を書く（クロージャ実装）
+               (action: UIAlertAction!) -> Void in
+            
+            
+            
+               print("通報しました")
+           })
+        let blockAction: UIAlertAction = UIAlertAction(title: "ブロックする", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) -> Void in
+         print("blocked")
+            
+            var document = self.messageArrayForDelete[indexPath]
+            
+            self.postRef.document(self.password).collection("messages").document(document).getDocument{ ( document, error ) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data()
+                    let dicMessage = StoredMessage(dic: dataDescription ?? ["":""])
+                    print(dicMessage.sender)
+                    self.blockUserArray = self.userDefaults.array(forKey: "block") as? [String] ?? []
+                    self.blockUserArray.append(dicMessage.sender)
+                    self.userDefaults.set(self.blockUserArray, forKey: "block")
+                    print("ブロックリストの数は\(self.blockUserArray)")
+                   // blockUserArray.append(dicMessage.sender)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+            self.messageAlert(title: "ブロックしました", message: "")
+        })
+           // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+               // ボタンが押された時の処理を書く（クロージャ実装）
+               (action: UIAlertAction!) -> Void in
+               print("Cancel")
+           })
+
+           // ③ UIAlertControllerにActionを追加
+           alert.addAction(cancelAction)
+           alert.addAction(reportAction)
+           alert.addAction(blockAction)
+
+           // ④ Alertを表示
+        present(alert, animated: true, completion: nil)
     
+    }
+    var alertController: UIAlertController!
+    func messageAlert(title:String, message:String) {
+        alertController = UIAlertController(title: title,
+                                   message: message,
+                                   preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK",
+                                       style: .default,
+                                       handler: nil))
+        present(alertController, animated: true)
+    }
+    
+//    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+//        let dateString = formatter.string(from: message.sentDate)
+//        return NSAttributedString(string: dateString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
+//    }
     //ホームボタンが押された時に遷移する
     @objc private func pause() {
        performSegue(withIdentifier: "home", sender: nil)
@@ -169,7 +260,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         nextVC?.roomPassword = self.roomPassword
         nextVC?.roomName = self.roomName
         nextVC?.password = self.password
-        
+        nextVC?.filteringBool = self.filteringBool
         let beforeVC = segue.destination as? JoinedRoomViewController
         beforeVC?.password = ""
     }
@@ -195,6 +286,7 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
     }
     
     func fetchMessage(text: String) {
+        
         print("テストドキュメント名は\(text)")
         postRef.document(text).collection("messages").addSnapshotListener{ (snapshots, err) in
             
@@ -209,21 +301,37 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
                 case .added:
                     let dic = DocumentChange.document.data()
                     let dicMessage = StoredMessage(dic: dic)
-                    
                     //メッセージのドキュメントを取得し、格納
-                    //userIdが一致しない時senderをOtherUserにする
-                    self.messageArrayForDelete.append(DocumentChange.document.documentID)
+                    print("senderは\(dicMessage.sender)")
                     let sendertest = self.user(senderId: dicMessage.sender)
+                    print("sendertestは\(sendertest)")//"self"
+                    //senderがブロックリストに格納されていた場合、表示しない
+                    if self.checkBlock(dicMessage.sender) {
+                        
+                        break
+                    }
+                    
+                    self.messageArrayForDelete.append(DocumentChange.document.documentID)
+                    
                     //Timestamp型をDate型に変換
                     let dateValue = dicMessage.time.dateValue()
-                    let message = Message(sender: sendertest, messageId: self.randomString(length: 20), sentDate: dateValue, kind: .text(dicMessage.message))
+                    
+                    let message = Message(sender: sendertest, messageId: self.usernumber, sentDate: dateValue, kind: .text(dicMessage.message))
                     print("message.sentDate\(message.sentDate)")
                     self.messages.append(message)
                     
                     self.messages = self.messages.sorted(by: { (m1,m2) in
                         return m1.sentDate < m2.sentDate
                     })
+                    self.messageArrayForDelete.map({Int($0)})
+                    self.messageArrayForDelete = self.messageArrayForDelete.sorted(by: { (m1,m2) in
+                        return m1 < m2
+                    })
                     self.messagesCollectionView.reloadData()
+                    for i in 0 ..< self.messages.count {
+                        print(self.messages[i])
+                    }
+                    
                     DispatchQueue.main.async {
                     self.messagesCollectionView.scrollToBottom()
                     }
@@ -235,25 +343,43 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
        
     }
     
+    //senderIdがブロックリストに存在しないかチェックする
+    func checkBlock(_ checkSender: String) -> Bool {
+        var blockUserArray = self.userDefaults.array(forKey: "block") as? [String] ?? []
+        for blockedUser in blockUserArray {
+            if checkSender == blockedUser {
+                print("含まれている")
+                return true
+            }
+        }
+        print("含まれていない")
+        return false
+    }
     
-    
+     //userIdが一致しない時senderをOtherUserにする
     func user(senderId: String) -> Sender {
+        
+        
+        
         if senderId == self.userId {
-            
+
             return currentUser
         } else {
-           
+
             return otherUser
         }
+        
     }
     
     private func inputMessage(text: String) {
+        var usernumber = userDefaults.integer(forKey: "usernumber")
         print("input:\(password)")
-        let messageId = randomString(length: 20)
+        let messageId = timeNumberDocument()
         let docData = [
             "message": text,
-            "sender": Auth.auth().currentUser?.uid /*UIDevice.current.identifierForVendor!.uuidString*/,
-            "time": Timestamp()
+            "sender": Auth.auth().currentUser?.uid,
+            "time": Timestamp(),
+            "usernumber": usernumber
             ] as [String : Any]
         postRef.document(password).collection("messages").document(messageId).setData(docData) {(err) in
         if let err = err {
@@ -262,6 +388,19 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
         }
             
         }
+    }
+    func timeNumberDocument() -> String {
+        let dt = Date()
+        var firstCha = ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyMMddHHmmss", options: 0, locale: Locale(identifier: "ja_JP"))
+        var time = dateFormatter.string(from: dt)
+        var timeNumber = time.compactMap { $0.hexDigitValue }.map({String($0)})
+        for cha in timeNumber {
+            var cha = cha
+            firstCha += cha
+        }
+        return firstCha ?? ""
     }
     
     func randomString(length: Int) -> String {

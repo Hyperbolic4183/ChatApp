@@ -213,6 +213,7 @@ class ReportViewController: UIViewController{
             "message": text,
             "sender": UIDevice.current.identifierForVendor!.uuidString,
             "time": Timestamp()
+            
             ] as [String : Any]
         postRefMessage.document(password).collection("reports").document(messageId).setData(docData) {(err) in
         if let err = err {

@@ -20,6 +20,7 @@ class PauseViewController: UIViewController {
     var messageArrayForDelete = [String]()
     var databaseRef: DatabaseReference!
     let postRef = Firestore.firestore().collection("Rooms")
+    var filteringBool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -28,6 +29,12 @@ class PauseViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
         ]
+//        filteringLabel.layer.cornerRadius = 5
+//        filteringLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+//        filteringLabel.layer.shadowColor = UIColor.black.cgColor
+//        filteringLabel.layer.shadowOpacity = 0.6
+//        filteringLabel.layer.shadowRadius = 4
+        
         roomNameLabel.layer.cornerRadius = 5
         roomNameLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         roomNameLabel.layer.shadowColor = UIColor.black.cgColor
@@ -67,10 +74,12 @@ class PauseViewController: UIViewController {
     @IBOutlet weak var roomNameLabel: UILabel!
     @IBOutlet weak var roomPasswordLabel: UILabel!
     @IBOutlet weak var reportButton: UIButton!
-    
-    
-    
-    
+    @IBOutlet weak var filteringLabel: UILabel!
+    @IBAction func filteringTextField(_ sender: Any) {
+    }
+    @IBAction func filteringSwitch(_ sender: Any) {
+        
+    }
     
     @IBAction func leaveRoomButton(_ sender: Any) {
         //FireStoreから削除
@@ -88,12 +97,26 @@ class PauseViewController: UIViewController {
         navigationController?.popToViewController(navigationController!.viewControllers[index], animated: true)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let nextVC: ReportViewController = segue.destination as! ReportViewController
         nextVC.password = self.password
+        
+    }
+//    @IBAction func filteringToggle(_ sender: UISwitch) {
+//        print("押された")
+//        if sender.isOn {
+//            self.filteringBool = true
+//        } else {
+//            self.filteringBool = false
+//        }
+//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        print("a")
+        var aiueo = ChatViewController()
+        aiueo.filteringBool = self.filteringBool
+        print(filteringBool)
     }
     
-   
-
 }
 //配列から要素を指定して削除
 extension Array where Element: Equatable {

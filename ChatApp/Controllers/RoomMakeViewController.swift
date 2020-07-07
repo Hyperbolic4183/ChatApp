@@ -12,7 +12,7 @@ import SVProgressHUD
 import SwiftUI
 import MessageKit
 import InputBarAccessoryView
-
+import RealmSwift
 
 class RoomMakeViewController: UIViewController, UITextFieldDelegate {
 
@@ -22,6 +22,10 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
     ] as [String : Any]
 
     
+    var nameArr = try! Realm().objects(RoomName.self)
+    var roomN: RoomName!
+    
+    var testarr: Results<RoomName>!
     var databaseRef: DatabaseReference!
     var ref = Database.database().reference()
     let postRef = Firestore.firestore().collection("Rooms")
@@ -57,6 +61,10 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
         roomPasswordTextField.delegate = self
         roomNameTextField.delegate = self
         overrideUserInterfaceStyle = .light
+        //Realmの設定
+        let realm = try! Realm()
+        self.testarr = realm.objects(RoomName.self)
+        
     }
     func setupViews() {
         
@@ -149,7 +157,15 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             //UserDefaultに入ったことのある部屋の名前とパスワードを格納
             
             joinedRoomNameArray.insert(self.roomNameTextField.text!, at: 0)
-            
+            print(self.roomNameTextField.text!)
+            let ins: RoomName = RoomName()
+            ins.roomName = self.roomNameTextField.text ?? ""
+            ins.roomPassword = self.roomPasswordTextField.text ?? ""
+            let ins2 = try! Realm()
+            try! ins2.write {
+                ins2.add(ins)
+            }
+            print("Realm1は\(self.testarr.count)")
             self.userDefaults.set(joinedRoomNameArray, forKey: "name")
 
             //パスワードを格納
@@ -157,7 +173,7 @@ class RoomMakeViewController: UIViewController, UITextFieldDelegate {
             joinedRoomPasswordArray.insert(self.roomPasswordTextField.text!, at: 0)
             //joinedRoomPasswordArray.append(self.roomPasswordTextField.text!)
             self.userDefaults.set(joinedRoomPasswordArray, forKey: "password")
-            self.roomNameTextField.text! = ""
+           // self.roomNameTextField.text! = ""
             self.roomPasswordTextField.text! = ""
             self.roomNameTextFieldBool = false
             self.roompasswordTextFieldBool = false

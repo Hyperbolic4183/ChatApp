@@ -95,13 +95,15 @@ class ViewController: UIViewController {
             print("サインインに成功しました。\(self.uid)")
         }
         SVProgressHUD.show()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
             self.dismiss(animated: true, completion: nil)
             SVProgressHUD.dismiss()
         }
         userDefaults.removeObject(forKey: "name")
         userDefaults.removeObject(forKey: "password")
-//        joinedRoomName = (userDefaults.array(forKey: "name") ?? [""]) as [String]
+        userDefaults.set(Int.random(in: 1000..<10000), forKey: "usernumber")
+        print(userDefaults.integer(forKey: "usernumber"))
+        //        joinedRoomName = (userDefaults.array(forKey: "name") ?? [""]) as [String]
 //        joinedRoomPassword = (userDefaults.array(forKey: "password") ?? [""]) as [String]
 //        joinedRoomName.removeAll()
 //        joinedRoomPassword.removeAll()
