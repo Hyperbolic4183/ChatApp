@@ -74,12 +74,7 @@ class PauseViewController: UIViewController {
     @IBOutlet weak var roomNameLabel: UILabel!
     @IBOutlet weak var roomPasswordLabel: UILabel!
     @IBOutlet weak var reportButton: UIButton!
-    @IBOutlet weak var filteringLabel: UILabel!
-    @IBAction func filteringTextField(_ sender: Any) {
-    }
-    @IBAction func filteringSwitch(_ sender: Any) {
-        
-    }
+    
     
     @IBAction func leaveRoomButton(_ sender: Any) {
         //FireStoreから削除
@@ -98,7 +93,7 @@ class PauseViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let nextVC: ReportViewController = segue.destination as! ReportViewController
+        let nextVC: ReportPickerViewController = segue.destination as! ReportPickerViewController
         nextVC.password = self.password
         
     }

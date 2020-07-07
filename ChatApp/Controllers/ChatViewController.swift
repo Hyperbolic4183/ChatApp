@@ -163,12 +163,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         
         return .bubbleTail(corner, .curved)
     }
-    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        let name = String(userDefaults.integer(forKey: "usernumber"))
-        
-        return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10),
-        NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-    }
+//    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+//        let name = String(userDefaults.integer(forKey: "usernumber"))
+//
+//        return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10),
+//        NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+//    }
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 16
     }
@@ -178,25 +178,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         print("indexPathは\(indexPath)")
         print("documentは\(messageArrayForDelete[indexPath])")
         print(messageArrayForDelete)
-       // postRef.document(password).collection("messages").document(messageArrayForDelete[indexPath]).delete()
-        //追加
-        // ① UIAlertControllerクラスのインスタンスを生成
-           // タイトル, メッセージ, Alertのスタイルを指定する
-           // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
-        let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "保存してもいいですか？", preferredStyle:  UIAlertController.Style.actionSheet)
+        let alert: UIAlertController = UIAlertController(title: "警告", message: "ブロックしたユーザーからメッセージは届きません。", preferredStyle:  UIAlertController.Style.actionSheet)
 
-           // ② Actionの設定
-           // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
-           // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
-           // OKボタン
-        let reportAction: UIAlertAction = UIAlertAction(title: "通報する", style: UIAlertAction.Style.default, handler:{
-               // ボタンが押された時の処理を書く（クロージャ実装）
-               (action: UIAlertAction!) -> Void in
-            
-            
-            
-               print("通報しました")
-           })
+        
         let blockAction: UIAlertAction = UIAlertAction(title: "ブロックする", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) -> Void in
          print("blocked")
@@ -218,6 +202,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
                 }
             }
             self.messageAlert(title: "ブロックしました", message: "")
+            
         })
            // キャンセルボタン
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
@@ -226,12 +211,10 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
                print("Cancel")
            })
 
-           // ③ UIAlertControllerにActionを追加
            alert.addAction(cancelAction)
-           alert.addAction(reportAction)
+         //  alert.addAction(reportAction)
            alert.addAction(blockAction)
 
-           // ④ Alertを表示
         present(alert, animated: true, completion: nil)
     
     }

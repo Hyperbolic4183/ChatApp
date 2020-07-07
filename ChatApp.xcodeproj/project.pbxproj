@@ -25,6 +25,7 @@
 		472AC657249BB2AC00F6172D /* RoomMakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC656249BB2AC00F6172D /* RoomMakeViewController.swift */; };
 		472AC659249BB2D600F6172D /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472AC658249BB2D600F6172D /* PauseViewController.swift */; };
 		4732B49524B2BE0100CC98A3 /* RoomName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4732B49424B2BE0100CC98A3 /* RoomName.swift */; };
+		4732B4BC24B4C87300CC98A3 /* ReportPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4732B4BB24B4C87300CC98A3 /* ReportPickerViewController.swift */; };
 		4764BB23249F1C6600FD96DC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4764BB22249F1C6600FD96DC /* Message.swift */; };
 		FCF86813779D147B79663DFC /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286E6CF5ED94A55BE08AB6AB /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		472AC656249BB2AC00F6172D /* RoomMakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMakeViewController.swift; sourceTree = "<group>"; };
 		472AC658249BB2D600F6172D /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		4732B49424B2BE0100CC98A3 /* RoomName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomName.swift; sourceTree = "<group>"; };
+		4732B4BB24B4C87300CC98A3 /* ReportPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPickerViewController.swift; sourceTree = "<group>"; };
 		4764BB22249F1C6600FD96DC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		8E9B86AA8724DA83E105C850 /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +120,7 @@
 				470831E024AB0E5B00D8046B /* ViewController.swift */,
 				4708320424AC6D8700D8046B /* ContactViewController.swift */,
 				4708320624ACBB1D00D8046B /* forbidenViewController.swift */,
+				4732B4BB24B4C87300CC98A3 /* ReportPickerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				4732B49524B2BE0100CC98A3 /* RoomName.swift in Sources */,
 				470831DF24AAD7A100D8046B /* TermsOfServiceViewController.swift in Sources */,
 				4764BB23249F1C6600FD96DC /* Message.swift in Sources */,
+				4732B4BC24B4C87300CC98A3 /* ReportPickerViewController.swift in Sources */,
 				472AC64A249B4BAC00F6172D /* ChatViewController.swift in Sources */,
 				471F089924A5EAB800987002 /* NavigationChatViewController.swift in Sources */,
 				471F089B24A5F05C00987002 /* TabBarViewController.swift in Sources */,

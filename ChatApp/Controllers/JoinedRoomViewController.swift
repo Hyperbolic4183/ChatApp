@@ -9,10 +9,10 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-import RealmSwift
+//import RealmSwift
 class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var test5 = try! Realm().objects(RoomName.self)
+//    var test5 = try! Realm().objects(RoomName.self)
 
     @IBOutlet weak var roomTableView: UITableView!
     var reportBool = false
@@ -26,7 +26,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()//追加
-        print(test5.count)
+//        print(test5.count)
         
         overrideUserInterfaceStyle = .light
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 1.0)
@@ -38,9 +38,9 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         roomTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
-        var test6 = userDefaults.integer(forKey: "usernumber")
-        print("usernumberは\(test6)です")
-        print(test5.count)
+       
+  
+ //       print(test5.count)
   //      print(test5[0].roomName)
        // print(userDefaults.integer(forKey: "userid"))
         super.viewWillAppear(animated)
@@ -72,7 +72,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell:UITableViewCell = (self.roomTableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?)!
         
         // note that indexPath.section is used rather than indexPath.row
-        cell.textLabel?.text = self.test5[indexPath.section].roomName//self.joinedRoomName[indexPath.section]
+        cell.textLabel?.text = self.joinedRoomName[indexPath.section]
         
         cell.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         cell.layer.shadowColor = UIColor.black.cgColor
