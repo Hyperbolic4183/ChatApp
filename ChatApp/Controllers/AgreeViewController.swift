@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import SVProgressHUD
 
-class ViewController: UIViewController {
+class AgreeViewController: UIViewController {
     
     let userDefaults = UserDefaults.standard
     let firstLunchKey = "firstLunchKey"
@@ -29,7 +29,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        check()
+        setupViews()
+    }
+    
+    func setupViews() {
         protocolLabel.layer.cornerRadius = 5
         protocolLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         protocolLabel.layer.shadowColor = UIColor.black.cgColor
@@ -66,11 +70,6 @@ class ViewController: UIViewController {
         startButton.layer.shadowColor = UIColor.black.cgColor
         startButton.layer.shadowOpacity = 0.6
         startButton.layer.shadowRadius = 4
-        
-        
-        check()
-
-        // Do any additional setup after loading the view.
     }
     @IBAction func agreeButton(_ sender: Any) {
         agreeButton.isSelected = !agreeButton.isSelected
@@ -101,12 +100,7 @@ class ViewController: UIViewController {
         }
         userDefaults.removeObject(forKey: "name")
         userDefaults.removeObject(forKey: "password")
-        userDefaults.set(Int.random(in: 1000..<10000), forKey: "usernumber")
-        print(userDefaults.integer(forKey: "usernumber"))
-        //        joinedRoomName = (userDefaults.array(forKey: "name") ?? [""]) as [String]
-//        joinedRoomPassword = (userDefaults.array(forKey: "password") ?? [""]) as [String]
-//        joinedRoomName.removeAll()
-//        joinedRoomPassword.removeAll()
+   
         print("joinedRoomNameは\(joinedRoomName)")
         print("joinedRoomPasswordは\(joinedRoomPassword)")
     }

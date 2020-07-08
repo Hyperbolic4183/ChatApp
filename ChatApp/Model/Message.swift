@@ -12,12 +12,10 @@ class StoredMessage {
     let message: String
     let sender: String
     var time: Timestamp
-    var usernumber: Int
     init(dic: [String: Any]) {
         self.message = dic["message"] as? String ?? ""
         self.sender = dic["sender"] as? String ?? ""
         self.time = dic["time"] as? Timestamp ?? Timestamp()
-        self.usernumber = dic["usernumber"] as? Int ?? 0
     }
 }
 

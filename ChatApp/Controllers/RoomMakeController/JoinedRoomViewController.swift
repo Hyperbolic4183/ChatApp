@@ -9,10 +9,9 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-//import RealmSwift
+
 class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-//    var test5 = try! Realm().objects(RoomName.self)
+
 
     @IBOutlet weak var roomTableView: UITableView!
     var reportBool = false
@@ -26,7 +25,7 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()//追加
-//        print(test5.count)
+
         
         overrideUserInterfaceStyle = .light
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 1.0)
@@ -40,9 +39,6 @@ class JoinedRoomViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
        
   
- //       print(test5.count)
-  //      print(test5[0].roomName)
-       // print(userDefaults.integer(forKey: "userid"))
         super.viewWillAppear(animated)
         
         joinedRoomName = (userDefaults.array(forKey: "name") ?? []) as [String]

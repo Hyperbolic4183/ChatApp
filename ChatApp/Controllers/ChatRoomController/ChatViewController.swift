@@ -60,9 +60,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     
     var messageArrayForDelete: [String] = []
     var senderId = ""
-    
-    
-    var usernumber = ""
     var password = ""
     var roomName = ""
     var roomPassword = ""
@@ -76,54 +73,47 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        
-        overrideUserInterfaceStyle = .light
-        
-        navigationItem.title = roomName
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 1.0)
-        self.navigationController?.navigationBar.tintColor = .white
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: UIColor.white
-        ]
-        userId = Auth.auth().currentUser?.uid as! String//UIDevice.current.identifierForVendor!.uuidString
+        //チャット画面でホームボタンが押されたことを監視する
+        NotificationCenter.default.addObserver(self, selector: #selector(pause), name: .notifyName, object: nil)
+        fetchMessage(text: password)
+       
+        userId = Auth.auth().currentUser?.uid as! String
         
         print("パスワードは\(password)")
         print("ルーム名は\(roomName)")
         print("ルームのパスワードは\(roomPassword)")
-        //self.bring
-
-        
-
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(pause), name: .notifyName, object: nil)
-        
-        scrollsToBottomOnKeyboardBeginsEditing = true
-        maintainPositionOnKeyboardFrameChanged = true
-        messagesCollectionView.messagesDataSource = self
-        messagesCollectionView.messagesLayoutDelegate = self
-        messagesCollectionView.messagesDisplayDelegate = self
-        messagesCollectionView.messageCellDelegate = self
-        messageInputBar.delegate = self
-
-        if let layout = self.messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
-             //自分のアイコンを非表示
-            layout.setMessageOutgoingAvatarSize(.zero)
-            layout.setMessageIncomingAvatarSize(.zero)
-
-            // 非表示の分、吹き出しを移動して空白を埋める
-            let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-            layout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: insets))
-            layout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: insets))
-            layout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
-            layout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
-        }
-        
-        fetchMessage(text: password)
-        
-        
-        // Do any additional setup after loading the view.
+        setupViews()
     }
+    
+    func setupViews() {
+        overrideUserInterfaceStyle = .light
+               
+               navigationItem.title = roomName
+               self.navigationController?.navigationBar.barTintColor = UIColor(red: 24/255, green: 129/255, blue: 124/255, alpha: 1.0)
+               self.navigationController?.navigationBar.tintColor = .white
+               self.navigationController?.navigationBar.titleTextAttributes = [
+                   .foregroundColor: UIColor.white
+               ]
+        if let layout = self.messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+            
+                layout.setMessageOutgoingAvatarSize(.zero)
+                layout.setMessageIncomingAvatarSize(.zero)
+                let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+              
+                layout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: insets))
+                layout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: insets))
+                layout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
+                layout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: insets))
+            
+        }
+        scrollsToBottomOnKeyboardBeginsEditing = true
+               maintainPositionOnKeyboardFrameChanged = true
+               messagesCollectionView.messagesDataSource = self
+               messagesCollectionView.messagesLayoutDelegate = self
+               messagesCollectionView.messagesDisplayDelegate = self
+               messagesCollectionView.messageCellDelegate = self
+               messageInputBar.delegate = self
+              }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.removeObserver(self,name: UIApplication.userDidTakeScreenshotNotification, object: nil)
@@ -131,7 +121,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        usernumber = String(userDefaults.integer(forKey: "usernumber"))
         print("viewWillAppear\(password)")
             //スクショ・録画の監視をオフにする
         NotificationCenter.default.addObserver(self, selector: #selector(didTakeScreenshot), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
@@ -163,22 +152,14 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         
         return .bubbleTail(corner, .curved)
     }
-//    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-//        let name = String(userDefaults.integer(forKey: "usernumber"))
-//
-//        return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10),
-//        NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-//    }
-    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 16
-    }
+
     func didTapMessage(in cell: MessageCollectionViewCell) {
         print("Message tapped")
         let indexPath = messagesCollectionView.indexPath(for: cell)![0]
         print("indexPathは\(indexPath)")
         print("documentは\(messageArrayForDelete[indexPath])")
         print(messageArrayForDelete)
-        let alert: UIAlertController = UIAlertController(title: "警告", message: "ブロックしたユーザーからメッセージは届きません。", preferredStyle:  UIAlertController.Style.actionSheet)
+        let alert: UIAlertController = UIAlertController(title: "警告", message: "ブロックしたユーザーからメッセージは受け取ることはできません。", preferredStyle:  UIAlertController.Style.actionSheet)
 
         
         let blockAction: UIAlertAction = UIAlertAction(title: "ブロックする", style: UIAlertAction.Style.default, handler: {
@@ -196,7 +177,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
                     self.blockUserArray.append(dicMessage.sender)
                     self.userDefaults.set(self.blockUserArray, forKey: "block")
                     print("ブロックリストの数は\(self.blockUserArray)")
-                   // blockUserArray.append(dicMessage.sender)
                 } else {
                     print("Document does not exist")
                 }
@@ -206,7 +186,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         })
            // キャンセルボタン
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
-               // ボタンが押された時の処理を書く（クロージャ実装）
                (action: UIAlertAction!) -> Void in
                print("Cancel")
            })
@@ -229,10 +208,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
         present(alertController, animated: true)
     }
     
-//    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-//        let dateString = formatter.string(from: message.sentDate)
-//        return NSAttributedString(string: dateString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
-//    }
+
     //ホームボタンが押された時に遷移する
     @objc private func pause() {
        performSegue(withIdentifier: "home", sender: nil)
@@ -254,12 +230,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
 }
 extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate{
     
-    
-    
-    
     //メッセージを送信
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-   
+        print("test")
         inputMessage(text: inputBar.inputTextView.text)
   
         inputBar.inputTextView.text = ""
@@ -299,7 +272,7 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
                     //Timestamp型をDate型に変換
                     let dateValue = dicMessage.time.dateValue()
                     
-                    let message = Message(sender: sendertest, messageId: self.usernumber, sentDate: dateValue, kind: .text(dicMessage.message))
+                    let message = Message(sender: sendertest, messageId: self.randomString(length: 10), sentDate: dateValue, kind: .text(dicMessage.message))
                     print("message.sentDate\(message.sentDate)")
                     self.messages.append(message)
                     
@@ -340,29 +313,20 @@ extension ChatViewController: MessageCellDelegate, InputBarAccessoryViewDelegate
     }
     
      //userIdが一致しない時senderをOtherUserにする
-    func user(senderId: String) -> Sender {
-        
-        
-        
-        if senderId == self.userId {
-
+    func user(senderId: String) -> Sender { if senderId == self.userId {
             return currentUser
         } else {
-
             return otherUser
         }
-        
     }
     
     private func inputMessage(text: String) {
-        var usernumber = userDefaults.integer(forKey: "usernumber")
         print("input:\(password)")
         let messageId = timeNumberDocument()
         let docData = [
             "message": text,
             "sender": Auth.auth().currentUser?.uid,
-            "time": Timestamp(),
-            "usernumber": usernumber
+            "time": Timestamp()
             ] as [String : Any]
         postRef.document(password).collection("messages").document(messageId).setData(docData) {(err) in
         if let err = err {

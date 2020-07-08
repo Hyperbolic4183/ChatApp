@@ -41,7 +41,10 @@ class ReportPickerViewController: UIViewController, UIPickerViewDelegate, UIPick
     let reportContents = ["スパム/宣伝目的","性的嫌がらせ","迷惑行為","暴力または危険な行為","その他"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupViews()
+    }
+    
+    func setupViews() {
         contentPicker.delegate = self
         contentPicker.dataSource = self
         reportcontentTextView.delegate = self
@@ -58,8 +61,6 @@ class ReportPickerViewController: UIViewController, UIPickerViewDelegate, UIPick
         submitButton.layer.shadowRadius = 4
         submitButton.isEnabled = false
         submitButton.setTitleColor(UIColor.gray, for: .normal)
-
-        // Do any additional setup after loading the view.
     }
     
     func textViewDidChange(_ textView: UITextView) {

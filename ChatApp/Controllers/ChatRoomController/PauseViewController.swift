@@ -29,11 +29,7 @@ class PauseViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
         ]
-//        filteringLabel.layer.cornerRadius = 5
-//        filteringLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-//        filteringLabel.layer.shadowColor = UIColor.black.cgColor
-//        filteringLabel.layer.shadowOpacity = 0.6
-//        filteringLabel.layer.shadowRadius = 4
+
         
         roomNameLabel.layer.cornerRadius = 5
         roomNameLabel.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -74,11 +70,8 @@ class PauseViewController: UIViewController {
     @IBOutlet weak var roomNameLabel: UILabel!
     @IBOutlet weak var roomPasswordLabel: UILabel!
     @IBOutlet weak var reportButton: UIButton!
-    
-    
     @IBAction func leaveRoomButton(_ sender: Any) {
-        //FireStoreから削除
-        postRef.document(password).delete()
+        
         //UserDefaultから削除
         joinedRoomName = (userDefaults.array(forKey: "name") ?? [""]) as [String]
         joinedRoomPassword = (userDefaults.array(forKey: "password") ?? [""]) as [String]
@@ -96,20 +89,6 @@ class PauseViewController: UIViewController {
         let nextVC: ReportPickerViewController = segue.destination as! ReportPickerViewController
         nextVC.password = self.password
         
-    }
-//    @IBAction func filteringToggle(_ sender: UISwitch) {
-//        print("押された")
-//        if sender.isOn {
-//            self.filteringBool = true
-//        } else {
-//            self.filteringBool = false
-//        }
-//    }
-    override func viewWillDisappear(_ animated: Bool) {
-        print("a")
-        var aiueo = ChatViewController()
-        aiueo.filteringBool = self.filteringBool
-        print(filteringBool)
     }
     
 }

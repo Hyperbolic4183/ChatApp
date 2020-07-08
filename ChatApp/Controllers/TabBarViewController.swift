@@ -16,12 +16,7 @@ class TabBarViewController: UITabBarController {
     var uid = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-        
-UITabBar.appearance().barTintColor = UIColor(red: 174/255, green: 238/255, blue: 226/255, alpha: 1)
+        UITabBar.appearance().barTintColor = UIColor(red: 174/255, green: 238/255, blue: 226/255, alpha: 1)
         UITabBar.appearance().tintColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
         
     }
@@ -42,9 +37,5 @@ UITabBar.appearance().barTintColor = UIColor(red: 174/255, green: 238/255, blue:
         super.viewWillAppear(animated)
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let nextVC = TermsOfServiceViewController()
-        nextVC.reportBool = self.reportBool
-    }
+  
 }
